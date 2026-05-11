@@ -1964,26 +1964,13 @@ function speakOracle() {
   const c = CATEGORIES[currentCat];
   const u = new SpeechSynthesisUtterance(`${c.label}이로다. ${currentGrade}. ${currentText}`);
 
-  /* TTS 설정 = 어드민 store.tts에서 (디폴트 = 남자 부처 톤) */
-  const tts = (window.__haetalStore && window.__haetalStore.tts) || {};
-  const mode = tts.mode || 'male';     /* 디폴트 = 남자 */
-  const malePatterns = /male|man|남|junho|jihun|min|joon|gunwoo|seoul.*male|^ko-kr-male/i;
-  const femalePatterns = /female|woman|여|yuna|sora|heami|sun.?hi|seoul.*female/i;
-
+  /* TTS = 시스템 한국어 voice + 적당한 톤 (단순화) */
   const voices = window.speechSynthesis.getVoices();
-  const koVoices = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('ko'));
-
-  let voice = null;
-  if (tts.voiceName) voice = voices.find(v => v.name === tts.voiceName);
-  if (!voice && mode === 'male')   voice = koVoices.find(v => malePatterns.test(v.name));
-  if (!voice && mode === 'female') voice = koVoices.find(v => femalePatterns.test(v.name));
-  if (!voice) voice = koVoices[0];
-
-  if (voice) u.voice = voice;
-  const isReallyMale = voice && malePatterns.test(voice.name);
-  u.pitch  = (tts.pitch != null) ? tts.pitch  : (mode === 'male' && !isReallyMale ? 0.4 : 0.85);
-  u.rate   = (tts.rate  != null) ? tts.rate   : 0.65;
+  const koVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ko'));
+  if (koVoice) u.voice = koVoice;
   u.lang = 'ko-KR';
+  u.rate = 0.7;
+  u.pitch = 0.85;
   u.volume = 1.0;
 
   const pulse = document.getElementById('ttsPulse');

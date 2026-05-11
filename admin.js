@@ -256,60 +256,7 @@
       '  <span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:#A89472;">샘플 부적으로 테스트 인쇄</span>' +
       '</div></div>';
 
-    /* === ② TTS 부처 음성 섹션 === */
-    html += '<div class="haAd-help" style="line-height:1.7;">' +
-      '<b>② 부처 음성 (TTS)</b> — 점괘 화면에서 자동 재생. 디폴트 = 남자 톤.<br>' +
-      '<b style="color:#FFD86B;">★ 자연스러운 남자 부처 톤 = 시스템에 한국어 남자 voice 다운로드 필요 (한 번 셋업)</b><br>' +
-      '&nbsp;&nbsp;• <b>iPad / iOS</b> ★ : 설정 → 손쉬운 사용 → 음성 → 한국어 → <b>Junho</b> 다운로드 (무료)<br>' +
-      '&nbsp;&nbsp;• <b>macOS</b> : 시스템 설정 → 음성 → 한국어 → <b>Junho</b> 다운로드<br>' +
-      '&nbsp;&nbsp;• <b>Windows</b> : 한국어 남자 voice 거의 없음 (Heami/Sun-Hi 모두 女) → 디폴트 = pitch 낮춰 묵직 톤 보완<br>' +
-      '아래 "특정 음성" 드롭다운 = 시스템에 설치된 한국어 voice 목록.' +
-      '</div>';
-    html += '<div class="haAd-section"><div class="haAd-section-title">부처 음성 · 톤·속도</div>';
-
-    /* 모드 라디오 */
-    html += '<div class="haAd-row" style="grid-template-columns:240px 1fr 80px;">' +
-            '<div class="haAd-label"><span class="ko">목소리 톤</span><span class="en">VOICE GENDER</span></div>' +
-            '<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">';
-    [['male','남자 (부처 디폴트)'],['female','여자'],['auto','자동']].forEach(function(opt){
-      var checked = (tts.mode === opt[0]) ? ' checked' : '';
-      html += '<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:#F5E9C9;">' +
-              '<input type="radio" name="ttsMode" value="' + opt[0] + '"' + checked + ' style="accent-color:#FFD86B;cursor:pointer;">' + opt[1] + '</label>';
-    });
-    html += '</div><div></div></div>';
-
-    /* 특정 voice 선택 */
-    html += '<div class="haAd-row" style="grid-template-columns:240px 1fr 80px;">' +
-            '<div class="haAd-label"><span class="ko">특정 음성 (선택사항)</span><span class="en">VOICE NAME</span></div>' +
-            '<select class="haAd-input" id="haAdVoiceSel" style="cursor:pointer;">' +
-            '<option value="">— 자동 선택 —</option>';
-    koVoices.forEach(function(v){
-      var sel = (tts.voiceName === v.name) ? ' selected' : '';
-      html += '<option value="' + escapeAttr(v.name) + '"' + sel + '>' + escapeHtml(v.name) + ' · ' + v.lang + '</option>';
-    });
-    html += '</select><div class="haAd-action"><button class="haAd-btn" data-act="tts-test">▶ 미리듣기</button></div></div>';
-
-    /* 피치 슬라이더 */
-    var pitchVal = (tts.pitch != null) ? tts.pitch : '';
-    html += '<div class="haAd-row" style="grid-template-columns:240px 1fr 80px;">' +
-            '<div class="haAd-label"><span class="ko">피치 (음 높이)</span><span class="en">PITCH 0.3 ~ 1.5</span></div>' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<input type="range" id="haAdTtsPitch" min="0.3" max="1.5" step="0.05" value="' + (pitchVal || 0.85) + '" style="flex:1;accent-color:#FFD86B;">' +
-            '<span id="haAdTtsPitchVal" style="font-family:\'IBM Plex Mono\',monospace;font-size:12px;color:#FFD86B;min-width:36px;">' + (pitchVal !== '' ? pitchVal : '자동') + '</span>' +
-            '</div><div class="haAd-action"><button class="haAd-btn" data-act="tts-pitch-reset">자동</button></div></div>';
-
-    /* 속도 슬라이더 */
-    var rateVal = (tts.rate != null) ? tts.rate : 0.65;
-    html += '<div class="haAd-row" style="grid-template-columns:240px 1fr 80px;">' +
-            '<div class="haAd-label"><span class="ko">속도</span><span class="en">RATE 0.5 ~ 1.5</span></div>' +
-            '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<input type="range" id="haAdTtsRate" min="0.5" max="1.5" step="0.05" value="' + rateVal + '" style="flex:1;accent-color:#FFD86B;">' +
-            '<span id="haAdTtsRateVal" style="font-family:\'IBM Plex Mono\',monospace;font-size:12px;color:#FFD86B;min-width:36px;">' + rateVal + '</span>' +
-            '</div><div class="haAd-action"><button class="haAd-btn" data-act="tts-reset-all">기본값</button></div></div>';
-
-    html += '</div>';
-
-    /* === ② 사운드 이벤트 (기존) === */
+    /* === ② 사운드 이벤트 === */
     html += '<div class="haAd-help">' +
       '<b>② 사운드 이벤트</b> — 프로젝트 폴더에 음원(.mp3·.wav·.m4a) 두고 경로 입력. 빈 칸 = 기본 신디 사운드.' +
       '</div>';
@@ -377,82 +324,6 @@
       } catch(e) { flash('실패', false); }
     });
 
-    /* ===== TTS 이벤트 ===== */
-    body.querySelectorAll('input[name="ttsMode"]').forEach(function(el){
-      el.addEventListener('change', function(){
-        store.tts.mode = el.value;
-        saveStore(store);
-        flash('목소리 톤: ' + el.value, true);
-      });
-    });
-    var voiceSel = body.querySelector('#haAdVoiceSel');
-    if (voiceSel) voiceSel.addEventListener('change', function(){
-      store.tts.voiceName = voiceSel.value || '';
-      saveStore(store);
-      flash(voiceSel.value ? '특정 음성 선택' : '자동 선택', true);
-    });
-    var pitchEl = body.querySelector('#haAdTtsPitch');
-    var pitchValEl = body.querySelector('#haAdTtsPitchVal');
-    if (pitchEl) pitchEl.addEventListener('input', function(){
-      store.tts.pitch = parseFloat(pitchEl.value);
-      pitchValEl.textContent = pitchEl.value;
-      saveStore(store);
-    });
-    var rateEl = body.querySelector('#haAdTtsRate');
-    var rateValEl = body.querySelector('#haAdTtsRateVal');
-    if (rateEl) rateEl.addEventListener('input', function(){
-      store.tts.rate = parseFloat(rateEl.value);
-      rateValEl.textContent = rateEl.value;
-      saveStore(store);
-    });
-    var pitchReset = body.querySelector('[data-act="tts-pitch-reset"]');
-    if (pitchReset) pitchReset.addEventListener('click', function(){
-      delete store.tts.pitch;
-      saveStore(store);
-      renderSounds();
-      flash('피치 = 자동', true);
-    });
-    var resetAll = body.querySelector('[data-act="tts-reset-all"]');
-    if (resetAll) resetAll.addEventListener('click', function(){
-      store.tts = { mode: 'male' };
-      saveStore(store);
-      renderSounds();
-      flash('TTS 설정 = 기본값', true);
-    });
-    var ttsTest = body.querySelector('[data-act="tts-test"]');
-    if (ttsTest) ttsTest.addEventListener('click', function(){
-      try {
-        window.speechSynthesis.cancel();
-        var u = new SpeechSynthesisUtterance('연애운이로다. 大 吉. 인연은 멀리 있지 않으니 마음을 비우라.');
-        var vs = speechSynthesis.getVoices();
-        var koVs = vs.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf('ko') === 0; });
-        var malePat = /male|man|남|junho|jihun|min|joon|gunwoo|seoul.*male|^ko-kr-male/i;
-        var femalePat = /female|woman|여|yuna|sora|heami|sun.?hi|seoul.*female/i;
-        var vc = null;
-        if (store.tts.voiceName) vc = vs.find(function(v){ return v.name === store.tts.voiceName; });
-        if (!vc && store.tts.mode === 'male')   vc = koVs.find(function(v){ return malePat.test(v.name); });
-        if (!vc && store.tts.mode === 'female') vc = koVs.find(function(v){ return femalePat.test(v.name); });
-        if (!vc) vc = koVs[0];
-        if (vc) u.voice = vc;
-        var realMale = vc && malePat.test(vc.name);
-        u.pitch  = (store.tts.pitch != null) ? store.tts.pitch  : (store.tts.mode === 'male' && !realMale ? 0.4 : 0.85);
-        u.rate   = (store.tts.rate  != null) ? store.tts.rate   : 0.65;
-        u.lang = 'ko-KR'; u.volume = 1.0;
-
-        /* 어드민 닫고 = 점괘 화면으로 이동 + 부처 입 애니메이션 sync */
-        panel.classList.remove('open');
-        if (typeof window.showScreen === 'function') {
-          window.showScreen('oracle');
-        }
-        var monk = document.getElementById('oracleMonk');
-        if (monk) monk.classList.add('speaking');
-        u.onend = function(){ if (monk) monk.classList.remove('speaking'); };
-        u.onerror = function(){ if (monk) monk.classList.remove('speaking'); };
-
-        window.speechSynthesis.speak(u);
-        flash('미리듣기: ' + (vc ? vc.name : 'default'), true);
-      } catch(e) { flash('재생 실패', false); }
-    });
   }
 
   /* ---------- tab: DATA ---------- */
