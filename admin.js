@@ -157,6 +157,7 @@
     '    <button class="haAd-tab active" data-tab="texts">텍스트</button>'+
     '    <button class="haAd-tab" data-tab="oracles">점괘 문구</button>'+
     '    <button class="haAd-tab" data-tab="sounds">사운드</button>'+
+    '    <button class="haAd-tab" data-tab="print">프린트</button>'+
     '    <button class="haAd-tab" data-tab="data">백업</button>'+
     '  </div>'+
     '  <div class="haAd-body" id="haAdBody"></div>'+
@@ -235,30 +236,43 @@
     });
   }
 
-  /* ---------- tab: SOUNDS (음원 + TTS 음성) ---------- */
-  function renderSounds(){
-    var manifest = window.HAETAL_SOUNDS || [];
-    if (!store.tts) store.tts = { mode: 'male' };
-    var tts = store.tts;
-    var voices = (typeof speechSynthesis !== 'undefined') ? speechSynthesis.getVoices() : [];
-    var koVoices = voices.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf('ko') === 0; });
-
-    /* === ① 프린트 셋업 (운영자만 — 관람객 메인은 다이얼로그 X) === */
-    var html = '<div class="haAd-section" style="margin-bottom:20px;">' +
-      '<div class="haAd-section-title">프린트 셋업 (운영자 1회 셋업용)</div>' +
-      '<div class="haAd-help" style="line-height:1.6;">' +
+  /* ---------- tab: PRINT (운영자 프린트 셋업 전용) ---------- */
+  function renderPrint(){
+    var html = '<div class="haAd-help" style="line-height:1.7;">' +
+      '<b>프린트 셋업 — 운영자 1회 셋업용</b><br>' +
       '관람객 메인 흐름 = 다이얼로그 X · 시뮬레이션만 · OS가 기억한 프린터로 자동 출력.<br>' +
       '<b>첫 셋업 시</b> = 아래 "프린트 테스트" 버튼 클릭 → 다이얼로그 → 프린터·사이즈·컬러 셋팅 (한 번).<br>' +
-      '<b>iPad/iOS</b> = AirPrint 프린터 첫 선택 후 = OS가 기억해서 = 이후 관람객 출력 = 같은 프린터로 자동.' +
-      '</div>' +
-      '<div style="display:flex;gap:10px;align-items:center;">' +
-      '  <button class="haAd-btn" data-act="print-test" style="font-size:13px;padding:10px 18px;">▶ 프린트 테스트 (다이얼로그 호출)</button>' +
+      '<b>iPad/iOS</b> = AirPrint 프린터 첫 선택 후 = OS가 기억 = 이후 관람객 출력 = 같은 프린터로 자동.' +
+      '</div>';
+    html += '<div class="haAd-section">' +
+      '<div class="haAd-section-title">프린트 테스트</div>' +
+      '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">' +
+      '  <button class="haAd-btn" data-act="print-test" style="font-size:14px;padding:14px 24px;">▶ 프린트 테스트 (다이얼로그 호출)</button>' +
       '  <span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:#A89472;">샘플 부적으로 테스트 인쇄</span>' +
       '</div></div>';
+    body.innerHTML = html;
 
-    /* === ② 사운드 이벤트 === */
-    html += '<div class="haAd-help">' +
-      '<b>② 사운드 이벤트</b> — 프로젝트 폴더에 음원(.mp3·.wav·.m4a) 두고 경로 입력. 빈 칸 = 기본 신디 사운드.' +
+    /* 프린트 테스트 버튼 이벤트 */
+    var ptEl = body.querySelector('[data-act="print-test"]');
+    if (ptEl) ptEl.addEventListener('click', function(){
+      panel.classList.remove('open');
+      try {
+        if (typeof window.goPrint === 'function') {
+          window.goPrint();
+          setTimeout(function(){ try { window.print(); } catch(e){} }, 2800);
+        } else {
+          window.print();
+        }
+        flash('프린트 테스트 → 다이얼로그 호출', true);
+      } catch(e) { flash('실패', false); }
+    });
+  }
+
+  /* ---------- tab: SOUNDS (음원 이벤트) ---------- */
+  function renderSounds(){
+    var manifest = window.HAETAL_SOUNDS || [];
+    var html = '<div class="haAd-help">' +
+      '<b>사운드 이벤트</b> — 프로젝트 폴더에 음원(.mp3·.wav·.m4a) 두고 경로 입력. 빈 칸 = 기본 신디 사운드.' +
       '</div>';
     html += '<div class="haAd-section"><div class="haAd-section-title">이벤트 → 음원 파일</div>';
     manifest.forEach(function(m){
@@ -307,22 +321,7 @@
       });
     });
 
-    /* ===== 프린트 테스트 버튼 (운영자 셋업용) ===== */
-    var ptEl = body.querySelector('[data-act="print-test"]');
-    if (ptEl) ptEl.addEventListener('click', function(){
-      /* 어드민 닫고 = 점괘 화면 → 부적 → 다이얼로그 호출 */
-      panel.classList.remove('open');
-      try {
-        if (typeof window.goPrint === 'function') {
-          window.goPrint();
-          /* 시뮬레이션 끝나기 전에 = 다이얼로그 호출 (테스트용) */
-          setTimeout(function(){ try { window.print(); } catch(e){} }, 2800);
-        } else {
-          window.print();
-        }
-        flash('프린트 테스트 → 다이얼로그 호출', true);
-      } catch(e) { flash('실패', false); }
-    });
+
 
   }
 
@@ -457,6 +456,7 @@
     if (currentTab === 'texts') renderTexts();
     else if (currentTab === 'oracles') renderOracles();
     else if (currentTab === 'sounds') renderSounds();
+    else if (currentTab === 'print') renderPrint();
     else renderData();
     panel.querySelectorAll('.haAd-tab').forEach(function(t){
       t.classList.toggle('active', t.getAttribute('data-tab') === currentTab);
