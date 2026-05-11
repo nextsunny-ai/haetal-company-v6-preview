@@ -1183,6 +1183,16 @@ body::after {
   margin-top: 6px;
 }
 .done-cta:hover { background: var(--dc-cream); }
+.done-cta-home {
+  background: transparent !important;
+  color: var(--dc-cream) !important;
+  border: 3px double var(--dc-yellow) !important;
+  box-shadow: none !important;
+}
+.done-cta-home:hover {
+  background: var(--dc-yellow) !important;
+  color: var(--dc-red-d) !important;
+}
 
 /* 홈 버튼 (인트로 외 화면 좌상단) */
 #haetalHomeBtn {
@@ -1798,7 +1808,10 @@ body::after {
       <div class="done-msg"><em>부적</em><br>발행되었나니</div>
       <div class="done-tag">"오늘 받은 한 장의 부적이<br>그대의 하루를 지키리라"</div>
       <div class="done-tray"><span style="color:var(--dc-yellow)">▸</span><span>하단 인쇄대에서 부적을 가져가소서</span></div>
-      <div class="done-cta" onclick="goCategory()">다른 점괘 청하기 [SPACE]</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;">
+        <div class="done-cta" onclick="goCategory()">다른 점괘 청하기 [SPACE]</div>
+        <div class="done-cta done-cta-home" onclick="goHaetalIntro()">⌂ 처음으로</div>
+      </div>
     </div>
   </div>
 </div>
