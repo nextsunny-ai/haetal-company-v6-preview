@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="vmeta" content="width=1920, initial-scale=1.0">
+<script>
+(function() {
+  function fitViewport() {
+    var w = Math.max(window.innerWidth, document.documentElement.clientWidth);
+    var meta = document.getElementById('vmeta');
+    if (!meta) return;
+    if (w < 1920) meta.setAttribute('content', 'width=1920, initial-scale=' + (w/1920).toFixed(4));
+    else meta.setAttribute('content', 'width=1920, initial-scale=1.0');
+  }
+  fitViewport();
+  window.addEventListener('orientationchange', () => setTimeout(fitViewport, 100));
+})();
+</script>
+<title>解脫 컴퍼니 v6 — 울트라백화점 부산 (모던 점집)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;700;900&family=Cinzel:wght@500;700;900&family=Bebas+Neue&family=Anton&family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* 모던 점집 — 다홍·머스타드·검정·크림 (키치 레트로 힙) */
+  --dc-red:    #D6322B;        /* 다홍 */
+  --dc-red-d:  #7A0E12;        /* 진한 다홍 */
+  --dc-orange: #E96A21;
+  --dc-yellow: #F2B544;        /* 머스타드 */
+  --dc-green:  #1FA075;
+  --dc-green-d:#0E3D2A;
+  --dc-blue:   #1E63C5;
+  --dc-blue-d: #0E2C66;
+  --dc-violet: #8C1411;        /* 베이스 = 진한 다홍 (천장 → 굿당 빨강 벽) */
+  --dc-violet-2:#5C0A0E;       /* 더 깊은 다홍 그림자 */
+  --dc-cream:  #F8E9C2;        /* 한지 */
+  --dc-cream-2:#EAD58B;
+  --dc-ink:    #0A0806;        /* 검정 한자 */
+  /* Y2K 키치 액센트 */
+  --kit-pink:  #FF2E7E;        /* 핫핑크 */
+  --kit-lime:  #C7E028;        /* 라임 */
+  --kit-sky:   #4FC3F7;        /* 사이버 하늘 */
+  --kit-mag:   #B91D8E;        /* 마젠타 */
+
+  --serif:    'Nanum Myeongjo', 'Noto Serif KR', serif;
+  --serif-h:  'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --sutra:    'Gowun Batang', serif;
+  --en:       'Bebas Neue', 'Cinzel', serif;       /* 굵은 영문 헤드 (어반 톤) */
+  --en-disp:  'Anton', 'Bebas Neue', sans-serif;
+  --kr-head:  'Black Han Sans', 'Noto Serif KR', serif;
+  --mono:     'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: var(--dc-violet);
+  color: var(--dc-cream);
+  font-family: var(--serif);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ground = deep violet temple paint, with grain */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(242,181,68,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,200,120,0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #8C1411 0%, #6E0F11 60%, #5C0A0E 100%);
+  pointer-events: none; z-index: 0;
+}
+/* ★ 한자 빽빽 벽지 (어반 시방서 톤) ★ */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'><g font-family='Noto Serif KR, serif' font-weight='900' fill='%23000' opacity='0.18'><text x='8' y='28' font-size='22'>解</text><text x='60' y='38' font-size='18'>脫</text><text x='118' y='24' font-size='20'>佛</text><text x='168' y='42' font-size='24'>道</text><text x='226' y='30' font-size='18'>禪</text><text x='14' y='74' font-size='18'>愛</text><text x='62' y='86' font-size='22'>財</text><text x='120' y='72' font-size='20'>康</text><text x='176' y='90' font-size='18'>業</text><text x='228' y='78' font-size='24'>緣</text><text x='10' y='126' font-size='24'>占</text><text x='62' y='138' font-size='18'>卦</text><text x='114' y='124' font-size='22'>運</text><text x='172' y='140' font-size='20'>命</text><text x='228' y='128' font-size='18'>夢</text><text x='8' y='176' font-size='20'>合</text><text x='58' y='190' font-size='24'>掌</text><text x='118' y='176' font-size='18'>三</text><text x='168' y='192' font-size='22'>拜</text><text x='224' y='180' font-size='20'>禱</text><text x='12' y='228' font-size='18'>無</text><text x='62' y='242' font-size='20'>常</text><text x='114' y='226' font-size='24'>空</text><text x='174' y='244' font-size='18'>性</text><text x='226' y='232' font-size='22'>悟</text></g></svg>");
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  pointer-events: none; z-index: 1;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+.screen { position: fixed; inset: 0; display: none; flex-direction: column; z-index: 5; }
+.screen.active { display: flex; }
+
+/* ============================================================ */
+/* DANCHEONG STRIPED BORDER — top/bot, with floret rosettes      */
+/* ============================================================ */
+.dc-border {
+  position: absolute;
+  left: 0; right: 0;
+  height: 56px;
+  z-index: 8;
+  display: flex; align-items: center;
+  background:
+    /* layered horizontal stripes */
+    linear-gradient(180deg,
+      var(--dc-yellow) 0%, var(--dc-yellow) 6%,
+      var(--dc-red) 6%, var(--dc-red) 22%,
+      var(--dc-cream-2) 22%, var(--dc-cream-2) 26%,
+      var(--dc-green) 26%, var(--dc-green) 50%,
+      var(--dc-cream-2) 50%, var(--dc-cream-2) 54%,
+      var(--dc-blue) 54%, var(--dc-blue) 78%,
+      var(--dc-cream-2) 78%, var(--dc-cream-2) 82%,
+      var(--dc-red-d) 82%, var(--dc-red-d) 100%);
+  border-top: 2px solid var(--dc-ink);
+  border-bottom: 2px solid var(--dc-ink);
+}
+.dc-border.top { top: 0; }
+.dc-border.bot { bottom: 0; transform: scaleY(-1); }
+
+/* repeating floret rosettes inside the green band */
+.dc-florets {
+  position: absolute;
+  left: 0; right: 0;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  pointer-events: none;
+}
+.dc-florets svg { height: 14px; width: auto; flex: 0 0 auto; margin-right: 36px; }
+
+/* corner cloud-scroll ornaments */
+.dc-corner {
+  position: absolute;
+  width: 130px; height: 130px;
+  z-index: 9;
+  pointer-events: none;
+}
+.dc-corner.tl { top: 56px; left: 0; }
+.dc-corner.tr { top: 56px; right: 0; transform: scaleX(-1); }
+.dc-corner.bl { bottom: 56px; left: 0; transform: scaleY(-1); }
+.dc-corner.br { bottom: 56px; right: 0; transform: scale(-1,-1); }
+
+/* huge floating background mandala (visible on every screen) */
+.bg-mandala {
+  position: fixed;
+  width: 1100px; height: 1100px;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.10;
+  animation: rotate-mandala 320s linear infinite;
+}
+@keyframes rotate-mandala { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+/* kiosk strip */
+.kiosk-bar {
+  position: absolute;
+  top: 92px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 18px; align-items: center;
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.28em;
+  color: var(--dc-cream);
+  padding: 9px 26px;
+  background: rgba(10,8,37,0.92);
+  border: 1px solid var(--dc-yellow);
+  z-index: 7;
+  white-space: nowrap;
+  max-width: calc(100vw - 360px);
+}
+.kiosk-bar .dot { width: 8px; height: 8px; background: var(--dc-yellow); border-radius: 50%; box-shadow: 0 0 12px var(--dc-yellow); animation: pulse 1.6s infinite; }
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+.kiosk-bar .red { color: var(--dc-red); }
+.kiosk-bar .step-pop {
+  background: var(--dc-yellow);
+  color: var(--dc-red-d);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 2px 12px;
+  border: 2px solid var(--dc-red-d);
+  margin: 0 -4px;
+}
+
+.foot-bar {
+  position: absolute;
+  bottom: 32px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 18px; align-items: center;
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.28em;
+  color: var(--dc-cream);
+  padding: 8px 24px;
+  background: rgba(10,8,37,0.92);
+  border: 1px solid var(--dc-yellow);
+  z-index: 7;
+  white-space: nowrap;
+  max-width: calc(100vw - 360px);
+}
+.foot-bar .pip { color: var(--dc-yellow); }
+
+/* ============================================================ */
+/* SCREEN 0 — INTRO  (giant lotus mandala center)               */
+/* ============================================================ */
+#intro { cursor: pointer; align-items: center; justify-content: center; padding: 180px 60px 140px; }
+
+.intro-stack {
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+  width: 100%; max-width: 1700px; z-index: 10; position: relative;
+}
+
+.intro-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  gap: 50px;
+  width: 100%;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* hanging vertical 부적 panels — green ground with red & blue rosettes (like reference side panel) */
+.intro-panel {
+  width: 100%;
+  height: 460px;
+  background: var(--dc-green);
+  border: 4px solid var(--dc-yellow);
+  outline: 2px solid var(--dc-red-d);
+  outline-offset: 4px;
+  position: relative;
+  display: flex; flex-direction: column;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+.intro-panel::before {
+  /* mini stripe header */
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 24px;
+  background: linear-gradient(180deg,
+    var(--dc-red) 0 30%,
+    var(--dc-yellow) 30% 40%,
+    var(--dc-blue) 40% 70%,
+    var(--dc-yellow) 70% 80%,
+    var(--dc-red-d) 80% 100%);
+  border-bottom: 1px solid var(--dc-ink);
+}
+.intro-panel-rosettes {
+  flex: 1;
+  display: flex; flex-direction: column;
+  justify-content: space-evenly; align-items: center;
+  padding: 50px 0 24px;
+}
+.intro-panel-rosettes svg { width: 88px; height: 88px; }
+.intro-panel.left  { animation: sway-l 5s ease-in-out infinite; transform-origin: top center; }
+.intro-panel.right { animation: sway-r 5.4s ease-in-out infinite; transform-origin: top center; }
+@keyframes sway-l { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+@keyframes sway-r { 0%,100% { transform: rotate(1.5deg); }  50% { transform: rotate(-1.5deg); } }
+
+/* center stage — the dancheong mandala plate (big square like reference) */
+.intro-plate {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--dc-violet-2);
+  border: 5px solid var(--dc-yellow);
+  outline: 2px solid var(--dc-red);
+  outline-offset: 6px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), inset 0 0 80px rgba(0,0,0,0.6);
+}
+.intro-plate .mandala-svg {
+  width: 92%; height: 92%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-mandala 25s linear infinite;
+  opacity: 0.7;
+}
+.intro-plate .intro-monk {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 58%; height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  filter: drop-shadow(0 0 20px var(--kit-pink)) drop-shadow(0 10px 20px rgba(0,0,0,0.55));
+}
+.intro-pop {
+  position: absolute;
+  z-index: 8;
+  font-family: 'Black Han Sans', sans-serif;
+  pointer-events: none;
+}
+.intro-pop-1 {
+  top: -8%; right: -6%;
+  font-size: 48px;
+  color: var(--kit-pink);
+  text-shadow: 3px 3px 0 var(--dc-ink);
+  animation: spin-burst 3s linear infinite;
+}
+.intro-pop-2 {
+  bottom: 6%; left: -8%;
+  font-size: 56px;
+  color: var(--kit-lime);
+  text-shadow: 3px 3px 0 var(--dc-ink);
+  animation: spin-burst 4s linear infinite reverse;
+}
+.intro-pop-3 {
+  top: 12%; left: -10%;
+  font-size: 64px;
+  color: var(--dc-yellow);
+  text-shadow: 4px 4px 0 var(--kit-pink), 6px 6px 0 var(--dc-ink);
+  font-weight: 400;
+  animation: bounce-pop 1.6s ease-in-out infinite;
+}
+@keyframes bounce-pop {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50%     { transform: translateY(-10px) rotate(-12deg); }
+}
+.intro-plate .plate-corner {
+  position: absolute; width: 92px; height: 92px;
+  pointer-events: none;
+}
+.intro-plate .plate-corner.tl { top: 6px; left: 6px; }
+.intro-plate .plate-corner.tr { top: 6px; right: 6px; transform: scaleX(-1); }
+.intro-plate .plate-corner.bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.intro-plate .plate-corner.br { bottom: 6px; right: 6px; transform: scale(-1,-1); }
+
+/* hanja under plate */
+.intro-titleblock {
+  text-align: center;
+  z-index: 12;
+}
+.intro-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--en); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.4em;
+  color: var(--dc-yellow);
+  margin-bottom: 0;
+  text-shadow: 0 0 10px rgba(245,208,74,0.6);
+  white-space: nowrap;
+}
+.intro-eyebrow::before, .intro-eyebrow::after { content: ''; width: 50px; height: 1px; background: var(--dc-yellow); }
+.intro-title-row {
+  display: flex; gap: 26px; align-items: center; justify-content: center;
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--dc-yellow);
+  text-shadow: 4px 4px 0 var(--dc-red-d), 0 0 30px rgba(245,208,74,0.5);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.intro-title-row .han { display: inline-block; }
+.intro-title-row .ko {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 36px; color: var(--dc-cream);
+  letter-spacing: 0.18em;
+  text-shadow: 2px 2px 0 var(--dc-red-d);
+}
+/* ★ 애블바디 극락왕생 슬로건 (메인 카피) ★ */
+.intro-slogan {
+  display: inline-flex; align-items: center; gap: 18px;
+  margin: 6px 0 10px;
+  background: var(--dc-yellow);
+  color: var(--dc-red-d);
+  padding: 12px 28px;
+  border: 3px solid var(--dc-ink);
+  outline: 2px solid var(--dc-yellow);
+  outline-offset: 4px;
+  font-family: 'Black Han Sans', 'Noto Serif KR', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  box-shadow: 6px 6px 0 var(--dc-red-d), 8px 8px 0 var(--dc-ink);
+  transform: rotate(-2deg);
+  z-index: 15;
+  position: relative;
+  white-space: nowrap;
+  animation: slogan-glow 2.4s ease-in-out infinite;
+}
+.intro-slogan .slogan-text em {
+  font-style: normal;
+  background: var(--dc-red);
+  color: var(--dc-yellow);
+  padding: 2px 14px;
+  margin: 0 6px;
+  font-family: 'Black Han Sans', 'Pretendard', sans-serif;
+  font-weight: 400;
+  border: 2px solid var(--dc-ink);
+  display: inline-block;
+  transform: rotate(2deg);
+  letter-spacing: 0.04em;
+}
+.intro-slogan .slogan-burst {
+  font-size: 36px;
+  color: var(--dc-red);
+  text-shadow: 2px 2px 0 var(--dc-ink);
+  animation: spin-burst 2s linear infinite;
+  display: inline-block;
+}
+@keyframes slogan-glow {
+  0%,100% { box-shadow: 6px 6px 0 var(--dc-red-d), 8px 8px 0 var(--dc-ink); }
+  50%     { box-shadow: 6px 6px 0 var(--dc-red-d), 8px 8px 0 var(--dc-ink), 0 0 40px rgba(242,181,68,0.7); }
+}
+@keyframes spin-burst {
+  to { transform: rotate(360deg); }
+}
+
+.intro-cta {
+  display: inline-flex; gap: 14px; align-items: center;
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 16px; letter-spacing: 0.4em;
+  color: var(--dc-red-d);
+  background: linear-gradient(180deg, var(--dc-yellow), var(--dc-cream-2));
+  padding: 18px 44px;
+  border: 3px double var(--dc-red-d);
+  cursor: pointer;
+  z-index: 12;
+  white-space: nowrap;
+  animation: cta-glow 2.4s ease-in-out infinite;
+}
+@keyframes cta-glow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(245,208,74,0.7), 0 6px 0 var(--dc-red-d); }
+  50%     { box-shadow: 0 0 60px 6px rgba(245,208,74,0.6), 0 6px 0 var(--dc-red-d); }
+}
+
+/* ============================================================ */
+/* SCREEN 1 — CATEGORY  (5 vertical hanji shrines on dancheong) */
+/* ============================================================ */
+#category { align-items: center; justify-content: center; padding: 200px 60px 150px; }
+
+.cat-head { text-align: center; margin-bottom: 36px; position: relative; z-index: 10; }
+.cat-step {
+  font-family: var(--en); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.55em;
+  color: var(--dc-yellow);
+  margin-bottom: 10px;
+  display: inline-flex; gap: 14px; align-items: center;
+  text-shadow: 0 0 10px rgba(245,208,74,0.5);
+}
+.cat-step::before, .cat-step::after { content: ''; width: 40px; height: 1px; background: var(--dc-yellow); }
+.cat-title {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 60px;
+  color: var(--dc-cream);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  text-shadow: 3px 3px 0 var(--dc-red-d);
+}
+.cat-title em {
+  font-style: normal; color: var(--dc-yellow);
+  text-shadow: 3px 3px 0 var(--dc-red-d), 0 0 20px rgba(245,208,74,0.5);
+}
+.cat-sub {
+  font-family: var(--sutra); font-style: italic;
+  font-size: 18px;
+  color: var(--dc-yellow);
+  letter-spacing: 0.03em;
+}
+.cat-sub::before, .cat-sub::after {
+  content: '◆'; font-size: 8px; margin: 0 14px;
+  vertical-align: middle;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  width: 100%;
+  max-width: 1500px;
+  z-index: 10; position: relative;
+}
+
+.cat-card {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 30%, rgba(245,208,74,0.14), transparent 70%),
+    linear-gradient(180deg, var(--dc-cream) 0%, var(--dc-cream-2) 100%);
+  padding: 24px 16px 80px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(.2,.7,.3,1), box-shadow 0.25s;
+  aspect-ratio: 3/5.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 4px solid var(--dc-yellow);
+  outline: 2px solid var(--dc-red-d);
+  outline-offset: 3px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+}
+
+/* dancheong stripe header on card */
+.cat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 18px;
+  background: linear-gradient(180deg,
+    var(--dc-red) 0 25%,
+    var(--dc-yellow) 25% 35%,
+    var(--dc-blue) 35% 65%,
+    var(--dc-yellow) 65% 75%,
+    var(--dc-green) 75% 100%);
+  border-bottom: 1.5px solid var(--dc-ink);
+}
+.cat-card::after {
+  /* thin inner frame */
+  content: '';
+  position: absolute;
+  top: 26px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid rgba(140,20,17,0.4);
+  pointer-events: none;
+}
+
+.cat-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(245,208,74,0.3); }
+
+.cat-rosette {
+  width: 110px; height: 110px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.cat-card .number {
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.35em;
+  color: var(--dc-red-d);
+  margin-bottom: 4px;
+}
+/* 키치 스탬프 (좌상단) */
+.cat-stamp {
+  position: absolute;
+  top: 32px; left: -10px;
+  background: var(--dc-ink); color: var(--kit-lime);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px; letter-spacing: 0.2em;
+  padding: 4px 10px;
+  border: 2px solid var(--kit-lime);
+  transform: rotate(-12deg);
+  z-index: 4;
+  box-shadow: 2px 2px 0 var(--kit-lime);
+}
+/* 키치 팝 (우하단 큰 심볼) */
+.cat-pop {
+  position: absolute;
+  bottom: 56px; right: -10px;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 64px;
+  color: var(--kit-pink);
+  text-shadow: 3px 3px 0 var(--dc-ink);
+  z-index: 4;
+  transform: rotate(8deg);
+  pointer-events: none;
+  animation: bounce-pop 1.8s ease-in-out infinite;
+}
+.cat-card[data-hue="orange"] .cat-pop { color: var(--dc-yellow); }
+.cat-card[data-hue="green"]  .cat-pop { color: var(--kit-lime); }
+.cat-card[data-hue="violet"] .cat-pop { color: var(--kit-mag); }
+.cat-card[data-hue="blue"]   .cat-pop { color: var(--kit-sky); }
+.cat-card .hanja {
+  font-family: var(--serif-h);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1;
+  margin: 4px 0 8px;
+}
+.cat-card[data-hue="red"]    .hanja { color: var(--dc-red);    text-shadow: 2px 2px 0 var(--dc-red-d); }
+.cat-card[data-hue="orange"] .hanja { color: var(--dc-orange); text-shadow: 2px 2px 0 var(--dc-red-d); }
+.cat-card[data-hue="green"]  .hanja { color: var(--dc-green);  text-shadow: 2px 2px 0 var(--dc-green-d); }
+.cat-card[data-hue="blue"]   .hanja { color: var(--dc-blue);   text-shadow: 2px 2px 0 var(--dc-blue-d); }
+.cat-card[data-hue="violet"] .hanja { color: var(--dc-violet); text-shadow: 2px 2px 0 var(--dc-ink); }
+
+.cat-card .label {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 22px;
+  color: var(--dc-ink);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cat-card .desc {
+  font-family: 'Black Han Sans', 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--dc-red);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-align: center;
+  padding: 6px 8px 0;
+  text-shadow: 1.5px 1.5px 0 var(--dc-red-d);
+  white-space: normal;
+}
+.cat-card .keymark {
+  position: absolute;
+  bottom: 22px; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.3em;
+  color: var(--dc-cream);
+  background: var(--dc-red-d);
+  padding: 5px 11px;
+  border: 1px solid var(--dc-yellow);
+}
+
+/* ============================================================ */
+/* SCREEN 2 — RITUAL                                            */
+/* ============================================================ */
+#ritual { align-items: center; justify-content: center; padding: 200px 60px 150px; text-align: center; }
+
+.ritual-stack { z-index: 10; position: relative; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.ritual-step {
+  font-family: var(--en); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.55em;
+  color: var(--dc-yellow);
+  margin-bottom: 10px;
+  display: inline-flex; gap: 14px; align-items: center;
+  text-shadow: 0 0 10px rgba(245,208,74,0.5);
+}
+.ritual-step::before, .ritual-step::after { content: ''; width: 40px; height: 1px; background: var(--dc-yellow); }
+.ritual-title {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 60px;
+  color: var(--dc-cream);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  text-shadow: 3px 3px 0 var(--dc-red-d);
+}
+.ritual-title em {
+  font-style: normal; color: var(--dc-yellow);
+  text-shadow: 3px 3px 0 var(--dc-red-d), 0 0 20px rgba(245,208,74,0.5);
+}
+.ritual-sub {
+  font-family: var(--sutra); font-style: italic;
+  font-size: 18px; color: var(--dc-yellow);
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+  white-space: nowrap;
+}
+
+.ritual-stage-wrap {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+.ritual-side {
+  font-family: var(--sutra);
+  color: var(--dc-cream);
+  line-height: 1.9;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.ritual-side.left { text-align: right; align-items: flex-end; }
+.ritual-side.right { text-align: left; align-items: flex-start; }
+.ritual-side .h {
+  font-family: var(--en); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.4em;
+  color: var(--dc-yellow);
+}
+.ritual-side .quote {
+  font-style: italic; font-size: 15px;
+  background: rgba(10,8,37,0.65);
+  border: 2px solid var(--dc-yellow);
+  outline: 1px solid var(--dc-red);
+  outline-offset: 2px;
+  padding: 18px 22px;
+  color: var(--dc-cream);
+  letter-spacing: 0;
+  min-width: 240px;
+}
+.ritual-side .hanja-stack {
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 32px;
+  color: var(--dc-yellow);
+  letter-spacing: 0.4em;
+  line-height: 1.4;
+  text-shadow: 2px 2px 0 var(--dc-red-d);
+}
+
+.cushion-stage {
+  position: relative; width: 420px; height: 420px;
+  display: flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 0 40px rgba(255,46,126,0.35)) drop-shadow(0 0 60px rgba(242,181,68,0.4));
+  animation: cushion-pulse 3s ease-in-out infinite;
+}
+@keyframes cushion-pulse {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.03); }
+}
+.cushion-stage svg { width: 100%; height: 100%; }
+.bow-counter {
+  position: absolute;
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 130px;
+  color: var(--dc-yellow);
+  text-shadow: 4px 4px 0 var(--dc-red-d), 0 0 40px rgba(245,208,74,0.7);
+  line-height: 0.9;
+  text-align: center;
+  z-index: 2;
+}
+.bow-counter small {
+  display: block;
+  font-family: var(--en); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.5em;
+  color: var(--dc-cream);
+  margin-top: 8px;
+  text-shadow: 1px 1px 0 var(--dc-red-d);
+}
+
+/* ★ 절 1번 = 메인 CTA 톤으로 크게 ★ */
+.bow-buttons {
+  display: flex; gap: 22px; justify-content: center;
+  margin-top: 36px; z-index: 10; position: relative;
+}
+.bow-btn {
+  min-width: 320px;
+  background: linear-gradient(180deg, var(--dc-yellow), var(--dc-cream-2));
+  color: var(--dc-red-d);
+  font-family: var(--kr-head), var(--serif-h);
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 22px 40px 18px;
+  position: relative;
+  border: 4px solid var(--dc-ink);
+  outline: 3px solid var(--dc-yellow);
+  outline-offset: 5px;
+  box-shadow: 7px 7px 0 var(--dc-red-d), 9px 9px 0 var(--dc-ink);
+  animation: bow-glow 2.4s ease-in-out infinite;
+}
+.bow-btn::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 12px;
+  background: linear-gradient(90deg,
+    var(--dc-red) 0 25%, var(--dc-yellow) 25% 50%, var(--dc-green) 50% 75%, var(--dc-blue) 75% 100%);
+  border-bottom: 2px solid var(--dc-ink);
+}
+.bow-btn::after {
+  content: '★'; position: absolute;
+  top: -22px; right: -16px;
+  font-size: 32px; color: var(--dc-yellow);
+  text-shadow: 2px 2px 0 var(--dc-ink);
+  animation: spin-burst 2s linear infinite;
+}
+@keyframes bow-glow {
+  0%,100% { box-shadow: 7px 7px 0 var(--dc-red-d), 9px 9px 0 var(--dc-ink); }
+  50%     { box-shadow: 7px 7px 0 var(--dc-red-d), 9px 9px 0 var(--dc-ink), 0 0 60px rgba(242,181,68,0.7); }
+}
+.bow-btn:hover:not(:disabled) {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 10px 12px 0 var(--dc-red-d), 12px 14px 0 var(--dc-ink), 0 0 80px rgba(242,181,68,0.9);
+}
+.bow-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 4px 4px 0 var(--dc-red-d), 6px 6px 0 var(--dc-ink);
+}
+.bow-btn:disabled { opacity: 0.6; cursor: default; animation: none; }
+.bow-btn.done {
+  background: linear-gradient(180deg, var(--dc-red), var(--dc-red-d));
+  color: var(--dc-yellow);
+  border-color: var(--dc-yellow);
+  outline-color: var(--dc-red);
+  animation: none;
+}
+.bow-btn .num {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 900; font-size: 76px; line-height: 1;
+  margin-top: 8px;
+  text-shadow: 3px 3px 0 var(--dc-red-d);
+}
+.bow-btn.done .num { text-shadow: 3px 3px 0 var(--dc-ink); }
+.bow-btn .lbl {
+  font-family: 'Bebas Neue', var(--mono); font-size: 16px;
+  letter-spacing: 0.32em; margin-top: 10px;
+  opacity: 1;
+  font-weight: 700;
+}
+.bow-btn .ko-lbl {
+  font-family: var(--kr-head);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  color: var(--dc-ink);
+}
+.bow-btn.done .ko-lbl { color: var(--dc-yellow); }
+
+.ritual-hardware {
+  margin-top: 24px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--dc-cream);
+  display: inline-flex; gap: 14px; align-items: center;
+  padding: 9px 22px;
+  border: 1px solid var(--dc-yellow);
+  background: rgba(10,8,37,0.55);
+}
+.ritual-hardware .pip {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--dc-yellow);
+  box-shadow: 0 0 10px var(--dc-yellow);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* SCREEN 3 — ORACLE                                            */
+/* ============================================================ */
+#oracle { align-items: center; justify-content: center; padding: 200px 60px 150px; }
+
+.oracle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  width: 100%;
+  max-width: 1400px;
+  align-items: stretch;
+  z-index: 10; position: relative;
+}
+.oracle-left {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  text-align: left; gap: 18px;
+  border-right: 2px dashed var(--dc-yellow);
+  padding-right: 60px;
+}
+.oracle-step {
+  font-family: var(--en); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.55em;
+  color: var(--dc-yellow);
+  text-shadow: 0 0 10px rgba(245,208,74,0.5);
+}
+.oracle-cat {
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: clamp(180px, 17vw, 280px);
+  color: var(--dc-yellow);
+  line-height: 0.85;
+  text-shadow: 6px 6px 0 var(--dc-red-d), 0 0 60px rgba(245,208,74,0.5);
+}
+
+/* ★ KITSCH MONK 캐릭터 (DJ 부처) ★ */
+.oracle-monk-wrap {
+  position: relative;
+  width: 100%; max-width: 520px;
+  margin: 8px 0;
+  filter: drop-shadow(0 16px 36px rgba(0,0,0,0.55)) drop-shadow(0 0 30px rgba(255,46,126,0.35));
+}
+.oracle-monk {
+  width: 100%; height: auto;
+  display: block;
+}
+.oracle-monk #monk-mouth {
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: none;
+}
+.oracle-monk.speaking #monk-mouth {
+  animation: monk-talk 0.22s ease-in-out infinite alternate;
+}
+@keyframes monk-talk {
+  0%   { transform: scaleY(0.3); }
+  100% { transform: scaleY(2.5); }
+}
+.oracle-bubble {
+  position: absolute;
+  top: -16px; right: -28px;
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 100px;
+  color: var(--dc-yellow);
+  background: var(--dc-red);
+  border: 5px solid var(--dc-ink);
+  outline: 3px solid var(--dc-yellow);
+  outline-offset: 5px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-shadow: 4px 4px 0 var(--dc-ink);
+  transform: rotate(-10deg);
+  animation: bubble-pop 1.6s ease-in-out infinite;
+  box-shadow: 6px 6px 0 var(--dc-violet-2);
+}
+@keyframes bubble-pop {
+  0%,100% { transform: rotate(-8deg) scale(1); }
+  50%     { transform: rotate(-8deg) scale(1.06); }
+}
+.oracle-cat-label {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 40px; color: var(--dc-cream);
+  letter-spacing: 0.04em;
+  text-shadow: 2px 2px 0 var(--dc-red-d);
+  white-space: nowrap;
+}
+.oracle-grade {
+  display: inline-flex; gap: 14px; align-items: baseline;
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 36px;
+  color: var(--dc-red-d);
+  background: linear-gradient(180deg, var(--dc-yellow), var(--dc-cream-2));
+  padding: 8px 22px;
+  letter-spacing: 0.15em;
+  border: 2px solid var(--dc-red-d);
+}
+.oracle-grade small {
+  font-family: var(--en); font-size: 9px;
+  letter-spacing: 0.4em; font-weight: 700;
+  color: var(--dc-red-d);
+}
+.oracle-time {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--dc-cream);
+  margin-top: 8px;
+}
+
+.oracle-right { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.oracle-scroll-head {
+  font-family: var(--en); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.5em;
+  color: var(--dc-yellow);
+  display: flex; gap: 14px; align-items: center;
+}
+.oracle-scroll-head::before, .oracle-scroll-head::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dc-yellow), transparent);
+}
+.oracle-text {
+  font-family: var(--sutra);
+  font-weight: 400;
+  font-size: clamp(22px, 1.85vw, 30px);
+  line-height: 2;
+  color: var(--dc-ink);
+  letter-spacing: 0.02em;
+  padding: 36px 40px;
+  background: linear-gradient(180deg, var(--dc-cream), var(--dc-cream-2));
+  border: 4px solid var(--dc-yellow);
+  outline: 2px solid var(--dc-red-d);
+  outline-offset: 4px;
+  position: relative;
+  text-align: justify;
+  text-wrap: pretty;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+}
+.oracle-text::before, .oracle-text::after {
+  content: '◆'; position: absolute;
+  font-size: 12px; color: var(--dc-red);
+  background: var(--dc-cream); padding: 0 12px;
+  left: 50%; transform: translateX(-50%);
+}
+.oracle-text::before { top: -7px; }
+.oracle-text::after  { bottom: -7px; }
+
+.oracle-actions { display: flex; gap: 14px; align-items: center; margin-top: 6px; }
+.oracle-btn {
+  flex: 1;
+  font-family: var(--serif); font-weight: 700;
+  font-size: 14px; letter-spacing: 0.3em;
+  padding: 18px 26px;
+  border: 2px solid var(--dc-yellow);
+  background: rgba(10,8,37,0.6);
+  color: var(--dc-cream);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex; gap: 14px; align-items: center; justify-content: center;
+}
+.oracle-btn:hover { background: rgba(245,208,74,0.18); border-color: var(--dc-yellow); }
+.oracle-btn.primary {
+  background: linear-gradient(180deg, var(--dc-yellow), var(--dc-cream-2));
+  color: var(--dc-red-d);
+  font-weight: 800;
+  border-color: var(--dc-red-d);
+}
+.oracle-btn.primary:hover { background: var(--dc-cream); border-color: var(--dc-red-d); }
+
+.tts-pulse { display: inline-flex; gap: 3px; align-items: center; }
+.tts-pulse span { width: 3px; background: currentColor; animation: pulse-bar 1s infinite ease-in-out; }
+.tts-pulse span:nth-child(1){ height: 8px;  animation-delay: 0s; }
+.tts-pulse span:nth-child(2){ height: 16px; animation-delay: 0.15s; }
+.tts-pulse span:nth-child(3){ height: 12px; animation-delay: 0.3s; }
+.tts-pulse span:nth-child(4){ height: 18px; animation-delay: 0.45s; }
+.tts-pulse span:nth-child(5){ height: 10px; animation-delay: 0.6s; }
+@keyframes pulse-bar { 0%,100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+.tts-pulse.idle span { animation: none; opacity: 0.3; transform: scaleY(0.6); }
+
+/* ============================================================ */
+/* SCREEN 4 — PRINTING                                          */
+/* ============================================================ */
+#printing { align-items: center; justify-content: center; padding: 200px 60px 150px; }
+
+#printActive { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
+.print-anim { width: 240px; height: 240px; position: relative; margin-bottom: 32px; }
+.print-anim::before {
+  content: ''; position: absolute; inset: 0;
+  border: 3px solid var(--dc-yellow);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1.6s linear infinite;
+  box-shadow: 0 0 30px rgba(245,208,74,0.4);
+}
+.print-anim::after {
+  content: '☸';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 130px;
+  color: var(--dc-yellow);
+  text-shadow: 0 0 30px rgba(245,208,74,0.6), 4px 4px 0 var(--dc-red-d);
+  animation: rotate-mandala-2 8s linear infinite;
+}
+@keyframes rotate-mandala-2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.print-title {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 56px; color: var(--dc-cream);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px; text-align: center;
+  text-shadow: 3px 3px 0 var(--dc-red-d);
+  white-space: nowrap;
+}
+.print-title em { font-style: normal; color: var(--dc-yellow); text-shadow: 3px 3px 0 var(--dc-red-d), 0 0 20px rgba(245,208,74,0.5); }
+.print-sub {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--dc-yellow);
+  text-align: center;
+}
+.print-progress { margin-top: 22px; width: 320px; height: 3px; background: rgba(10,8,37,0.6); position: relative; overflow: hidden; border: 1px solid var(--dc-yellow); }
+.print-progress::before {
+  content: ''; position: absolute;
+  top: 0; left: -40%; width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--dc-yellow), transparent);
+  animation: progress-slide 1.6s linear infinite;
+}
+@keyframes progress-slide { to { left: 100%; } }
+
+#printDone { display: none; align-items: center; gap: 60px; z-index: 10; }
+#printDone.show { display: flex; }
+
+.bujeok {
+  width: 220px;          /* 영수증 폭 (80mm 영수증 톤) */
+  background: var(--dc-cream);
+  color: var(--dc-red-d);
+  padding: 0;
+  position: relative;
+  border: 4px solid var(--dc-red);
+  outline: 2px solid var(--dc-yellow);
+  outline-offset: 4px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7);
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  animation: bujeok-in 1s cubic-bezier(.2,.7,.3,1);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(140,20,17,0.05) 0 1px, transparent 1px 4px);
+  font-family: var(--serif);
+}
+@keyframes bujeok-in { from { opacity: 0; transform: translateY(60px) rotate(-2deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+
+.bujeok-header {
+  width: 100%;
+  height: 22px;
+  background: linear-gradient(180deg,
+    var(--dc-red) 0 30%,
+    var(--dc-yellow) 30% 40%,
+    var(--dc-blue) 40% 70%,
+    var(--dc-yellow) 70% 80%,
+    var(--dc-green) 80% 100%);
+  border-bottom: 1.5px solid var(--dc-ink);
+}
+
+.bujeok-body { padding: 16px 20px 14px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+.bujeok-grade {
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 14px; letter-spacing: 0.4em;
+  background: var(--dc-red); color: var(--dc-cream);
+  padding: 5px 16px;
+  margin-bottom: 8px;
+  border: 1px solid var(--dc-yellow);
+}
+
+.bujeok-mandala {
+  width: 130px; height: 130px;
+  margin: 4px 0;
+}
+
+.bujeok-hanja-block { position: absolute; top: 86px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+.bujeok-hanja {
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 64px; color: var(--dc-cream);
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--dc-red-d);
+}
+
+.bujeok-label {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 22px; margin: 8px 0 12px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.bujeok-divider {
+  width: 70%; height: 1px;
+  background: var(--dc-red);
+  position: relative;
+  margin-bottom: 12px;
+}
+.bujeok-divider::before {
+  content: '◆'; position: absolute; top: -7px;
+  font-size: 9px; color: var(--dc-red);
+  background: var(--dc-cream); padding: 0 6px;
+  left: 50%; transform: translateX(-50%);
+}
+.bujeok-text {
+  font-family: var(--sutra); font-weight: 400;
+  font-size: 13px; line-height: 1.85;
+  margin-bottom: 14px;
+  padding: 0 6px;
+  text-align: center;
+  text-wrap: pretty;
+  color: var(--dc-ink);
+}
+.bujeok-stamps { display: flex; gap: 8px; margin-bottom: 10px; }
+.bujeok-stamp {
+  width: 44px; height: 44px;
+  background: var(--dc-red);
+  color: var(--dc-cream);
+  font-family: var(--serif-h); font-weight: 900;
+  font-size: 22px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--dc-red-d);
+  position: relative;
+}
+.bujeok-stamp:nth-child(1) { transform: rotate(-6deg); }
+.bujeok-stamp:nth-child(2) { transform: rotate(4deg); }
+.bujeok-stamp::before { content: ''; position: absolute; inset: 3px; border: 1px solid rgba(248,233,194,0.6); }
+
+.bujeok-footer {
+  width: 100%;
+  background: var(--dc-red-d);
+  color: var(--dc-cream);
+  padding: 10px 0;
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.3em;
+  border-top: 2px solid var(--dc-yellow);
+}
+
+.bujeok::after {
+  content: ''; position: absolute;
+  bottom: -22px; left: -4px; width: calc(100% + 8px); height: 22px;
+  background:
+    linear-gradient(135deg, var(--dc-red) 50%, transparent 50%) left top / 50% 100% no-repeat,
+    linear-gradient(225deg, var(--dc-red) 50%, transparent 50%) right top / 50% 100% no-repeat;
+}
+
+.done-side { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; max-width: 420px; }
+.done-step { font-family: var(--en); font-weight: 700; font-size: 12px; letter-spacing: 0.55em; color: var(--dc-yellow); text-shadow: 0 0 10px rgba(245,208,74,0.5); }
+.done-msg {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 60px; color: var(--dc-cream);
+  letter-spacing: 0.04em; line-height: 1.05;
+  text-shadow: 3px 3px 0 var(--dc-red-d);
+}
+.done-msg em { font-style: normal; color: var(--dc-yellow); text-shadow: 3px 3px 0 var(--dc-red-d), 0 0 20px rgba(245,208,74,0.4); }
+.done-tag {
+  font-family: var(--sutra); font-style: italic;
+  font-size: 16px; color: var(--dc-cream);
+  line-height: 1.7;
+  border-top: 1px solid var(--dc-yellow);
+  border-bottom: 1px solid var(--dc-yellow);
+  padding: 14px 0;
+}
+.done-tray {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--dc-yellow);
+  display: inline-flex; gap: 12px; align-items: center;
+}
+.done-cta {
+  font-family: var(--kr-head); font-weight: 400;
+  font-size: 14px; letter-spacing: 0.4em;
+  color: var(--dc-red-d);
+  background: linear-gradient(180deg, var(--dc-yellow), var(--dc-cream-2));
+  padding: 18px 36px;
+  border: 3px double var(--dc-red-d);
+  cursor: pointer;
+  margin-top: 6px;
+}
+.done-cta:hover { background: var(--dc-cream); }
+
+/* 홈 버튼 (인트로 외 화면 좌상단) */
+#haetalHomeBtn {
+  position: fixed;
+  top: 78px; left: 24px;
+  z-index: 12;
+  background: rgba(10,8,37,0.92);
+  border: 2px solid var(--dc-yellow);
+  outline: 1px solid var(--dc-red);
+  outline-offset: 3px;
+  color: var(--dc-yellow);
+  padding: 10px 18px;
+  font-family: var(--serif-h);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.25em;
+  cursor: pointer;
+  display: none;
+  transition: all 0.18s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+}
+#haetalHomeBtn:hover {
+  background: var(--dc-yellow);
+  color: var(--dc-red-d);
+  border-color: var(--dc-cream);
+}
+
+/* ==================================================
+   PRINT — 부적만 영수증 사이즈 (80×200mm)
+   ================================================== */
+@media print {
+  @page { size: 80mm 200mm; margin: 4mm; }
+  html, body {
+    background: #FFFFFF !important;
+    width: 80mm !important; height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* 모든 화면 숨김 + #haetalHomeBtn + admin 등 */
+  body::before, body::after,
+  .dc-border, .dc-corner, .kiosk-bar, .foot-bar, .bg-mandala,
+  .screen, #haetalHomeBtn, #haetalAdminBtn, #haetalAdminPanel { display: none !important; }
+  /* 부적만 보이게 */
+  #printing, #printDone { display: flex !important; flex-direction: column !important; }
+  #printActive { display: none !important; }
+  .done-side { display: none !important; }
+  .bujeok {
+    width: 72mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: #000 !important;
+  }
+  .bujeok::after { display: none !important; }
+}
+
+@media (max-height: 840px) {
+  .intro-plate { max-width: 540px; }
+  .intro-panel { height: 480px; }
+  .intro-panel-rosettes svg { width: 72px; height: 72px; }
+}
+@media (max-height: 720px) {
+  .intro-plate { max-width: 380px; }
+  .intro-panel { height: 380px; }
+  .cushion-stage { width: 300px; height: 300px; }
+  .bow-counter { font-size: 100px; }
+  .oracle-cat { font-size: 180px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== SHARED SVG DEFS ============================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- ROSETTE (small) — 6-petal red+yellow, like the green-panel decoration in the reference -->
+    <symbol id="rosette" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="#0E0A06" stroke="#F5D04A" stroke-width="2"/>
+      <g transform="translate(50,50)">
+        <g id="rs-petals">
+          <path d="M0 -36 C -10 -28, -10 -14, 0 -8 C 10 -14, 10 -28, 0 -36 Z" fill="#D6322B" stroke="#F8E9C2" stroke-width="1.2"/>
+        </g>
+        <use href="#rs-petals" transform="rotate(60)"/>
+        <use href="#rs-petals" transform="rotate(120)"/>
+        <use href="#rs-petals" transform="rotate(180)"/>
+        <use href="#rs-petals" transform="rotate(240)"/>
+        <use href="#rs-petals" transform="rotate(300)"/>
+        <circle r="9" fill="#F5D04A" stroke="#D6322B" stroke-width="1.5"/>
+        <circle r="3" fill="#D6322B"/>
+      </g>
+    </symbol>
+
+    <!-- BLUE-PETAL ROSETTE -->
+    <symbol id="rosette-blue" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="#0E0A06" stroke="#F5D04A" stroke-width="2"/>
+      <g transform="translate(50,50)">
+        <g id="rsb-petals">
+          <path d="M0 -36 C -10 -28, -10 -14, 0 -8 C 10 -14, 10 -28, 0 -36 Z" fill="#1E63C5" stroke="#F8E9C2" stroke-width="1.2"/>
+        </g>
+        <use href="#rsb-petals" transform="rotate(45)"/>
+        <use href="#rsb-petals" transform="rotate(90)"/>
+        <use href="#rsb-petals" transform="rotate(135)"/>
+        <use href="#rsb-petals" transform="rotate(180)"/>
+        <use href="#rsb-petals" transform="rotate(225)"/>
+        <use href="#rsb-petals" transform="rotate(270)"/>
+        <use href="#rsb-petals" transform="rotate(315)"/>
+        <circle r="9" fill="#F5D04A" stroke="#1E63C5" stroke-width="1.5"/>
+        <circle r="3" fill="#D6322B"/>
+      </g>
+    </symbol>
+
+    <!-- CLOUD CORNER (구름단청) — flowing curl scrolls -->
+    <symbol id="cloud-corner" viewBox="0 0 130 130">
+      <!-- outer curl green -->
+      <path d="M 0 40 C 30 40 50 30 60 12 C 50 30 40 56 16 64 C 6 56 4 48 0 40 Z" fill="#2EA862" stroke="#0E0A06" stroke-width="1.4"/>
+      <path d="M 14 56 C 30 50 40 38 46 22 C 38 36 28 50 14 56 Z" fill="#F5D04A" stroke="#0E0A06" stroke-width="1"/>
+      <!-- middle curl orange -->
+      <path d="M 0 76 C 36 76 60 60 76 30 C 60 60 50 88 16 96 C 6 90 4 84 0 76 Z" fill="#E96A21" stroke="#0E0A06" stroke-width="1.4"/>
+      <path d="M 16 88 C 38 80 56 60 64 36 C 50 60 36 78 16 88 Z" fill="#F5D04A" stroke="#0E0A06" stroke-width="1" opacity="0.9"/>
+      <!-- inner curl red -->
+      <path d="M 0 112 C 50 112 88 86 110 50 C 96 92 76 116 22 124 C 10 120 4 118 0 112 Z" fill="#D6322B" stroke="#0E0A06" stroke-width="1.4"/>
+      <!-- tiny center spiral -->
+      <path d="M 18 116 C 30 110 42 100 50 86 C 42 100 32 112 18 116 Z" fill="#1E63C5" stroke="#0E0A06" stroke-width="1"/>
+    </symbol>
+
+    <!-- BIG MANDALA (the centerpiece — 8-petal lotus with curling petals + 8-blade swirl center) -->
+    <symbol id="mandala" viewBox="0 0 400 400">
+      <!-- background plate (투명 — 캐릭터·plate 자체 배경이 보이도록) -->
+      <rect x="0" y="0" width="400" height="400" fill="transparent"/>
+
+      <!-- outer ring of 8 green leaves -->
+      <g transform="translate(200,200)">
+        <g id="m-leaf">
+          <path d="M0 -190 C -36 -160 -36 -120 0 -100 C 36 -120 36 -160 0 -190 Z" fill="#2EA862" stroke="#0E0A06" stroke-width="2"/>
+          <path d="M0 -180 C -28 -158 -28 -126 0 -110 C 28 -126 28 -158 0 -180 Z" fill="none" stroke="#F8E9C2" stroke-width="1"/>
+        </g>
+        <use href="#m-leaf" transform="rotate(45)"/>
+        <use href="#m-leaf" transform="rotate(90)"/>
+        <use href="#m-leaf" transform="rotate(135)"/>
+        <use href="#m-leaf" transform="rotate(180)"/>
+        <use href="#m-leaf" transform="rotate(225)"/>
+        <use href="#m-leaf" transform="rotate(270)"/>
+        <use href="#m-leaf" transform="rotate(315)"/>
+      </g>
+
+      <!-- big curled flame petals (red+orange alternating) -->
+      <g transform="translate(200,200)">
+        <g id="m-flame-r">
+          <!-- hooked flame petal -->
+          <path d="M 0 -150
+                   C -50 -130, -78 -90, -70 -50
+                   C -56 -10, -22 -2, 0 -22
+                   C 22 -2, 56 -10, 70 -50
+                   C 78 -90, 50 -130, 0 -150 Z"
+                fill="#D6322B" stroke="#0E0A06" stroke-width="2"/>
+          <!-- inner cream highlight -->
+          <path d="M 0 -130
+                   C -36 -114, -56 -82, -48 -50
+                   C -36 -28, -16 -22, 0 -34
+                   C 16 -22, 36 -28, 48 -50
+                   C 56 -82, 36 -114, 0 -130 Z"
+                fill="#F8E9C2" stroke="none"/>
+          <!-- inner red dot -->
+          <circle cx="0" cy="-78" r="14" fill="#D6322B"/>
+          <circle cx="0" cy="-78" r="6" fill="#0E0A06"/>
+        </g>
+        <g id="m-flame-o">
+          <path d="M 0 -150
+                   C -50 -130, -78 -90, -70 -50
+                   C -56 -10, -22 -2, 0 -22
+                   C 22 -2, 56 -10, 70 -50
+                   C 78 -90, 50 -130, 0 -150 Z"
+                fill="#E96A21" stroke="#0E0A06" stroke-width="2"/>
+          <path d="M 0 -130
+                   C -36 -114, -56 -82, -48 -50
+                   C -36 -28, -16 -22, 0 -34
+                   C 16 -22, 36 -28, 48 -50
+                   C 56 -82, 36 -114, 0 -130 Z"
+                fill="#F8E9C2" stroke="none"/>
+          <circle cx="0" cy="-78" r="14" fill="#E96A21"/>
+          <circle cx="0" cy="-78" r="6" fill="#0E0A06"/>
+        </g>
+        <use href="#m-flame-r" transform="rotate(0)"/>
+        <use href="#m-flame-o" transform="rotate(45)"/>
+        <use href="#m-flame-r" transform="rotate(90)"/>
+        <use href="#m-flame-o" transform="rotate(135)"/>
+        <use href="#m-flame-r" transform="rotate(180)"/>
+        <use href="#m-flame-o" transform="rotate(225)"/>
+        <use href="#m-flame-r" transform="rotate(270)"/>
+        <use href="#m-flame-o" transform="rotate(315)"/>
+      </g>
+
+      <!-- center swirl 8-blade blue -->
+      <g transform="translate(200,200)">
+        <circle r="62" fill="#1A1144" stroke="#0E0A06" stroke-width="2"/>
+        <g id="m-blade">
+          <path d="M 0 0 C 8 -20, 24 -34, 48 -36 C 30 -28, 18 -20, 0 0 Z" fill="#1E63C5" stroke="#0E0A06" stroke-width="1"/>
+        </g>
+        <use href="#m-blade" transform="rotate(0)"/>
+        <use href="#m-blade" transform="rotate(45)"/>
+        <use href="#m-blade" transform="rotate(90)"/>
+        <use href="#m-blade" transform="rotate(135)"/>
+        <use href="#m-blade" transform="rotate(180)"/>
+        <use href="#m-blade" transform="rotate(225)"/>
+        <use href="#m-blade" transform="rotate(270)"/>
+        <use href="#m-blade" transform="rotate(315)"/>
+        <circle r="14" fill="#F5D04A" stroke="#0E0A06" stroke-width="1.5"/>
+        <circle r="6" fill="#F8E9C2"/>
+      </g>
+    </symbol>
+
+    <!-- KITSCH MONK 캐릭터 (DJ 부처 = 뉴진스님 톤) -->
+    <symbol id="kitsch-monk" viewBox="0 0 200 240">
+      <!-- 광배 (사이키 후광) -->
+      <circle cx="100" cy="90" r="78" fill="#FF2E7E"/>
+      <circle cx="100" cy="90" r="68" fill="#F2B544"/>
+      <circle cx="100" cy="90" r="58" fill="#FFF3D9"/>
+      <!-- 광배 빛살 -->
+      <g transform="translate(100,90)" stroke="#7A0E12" stroke-width="2.5" fill="none">
+        <line x1="0" y1="-86" x2="0" y2="-72"/>
+        <line x1="61" y1="-61" x2="51" y2="-51"/>
+        <line x1="86" y1="0" x2="72" y2="0"/>
+        <line x1="61" y1="61" x2="51" y2="51"/>
+        <line x1="-61" y1="61" x2="-51" y2="51"/>
+        <line x1="-86" y1="0" x2="-72" y2="0"/>
+        <line x1="-61" y1="-61" x2="-51" y2="-51"/>
+      </g>
+      <!-- 회색 장삼 (V자 두루마기, 양쪽 어깨 덮음 = 한국 스님 정통) -->
+      <path d="M40 232 L62 152 Q100 144 138 152 L160 232 Z" fill="#9BA0A8" stroke="#0A0806" stroke-width="3"/>
+      <!-- V자 검정 옷깃 (목·가슴 위쪽 = 한국 두루마기 핵심) -->
+      <path d="M78 148 L100 200 L122 148 L114 146 L100 184 L86 146 Z" fill="#0A0806"/>
+      <!-- 빨강 가사 (한쪽 어깨에서 → 반대 허리, 한국 스님 정통 사선) -->
+      <path d="M148 152 Q156 156 158 162 L160 232 L120 232 Q104 215 90 200 Q78 188 70 178 Q108 168 148 152 Z" fill="#D6322B" stroke="#0A0806" stroke-width="2.5"/>
+      <!-- 가사 격자 패턴 (한국 가사 정통 무늬) -->
+      <g stroke="#7A0E12" stroke-width="0.8" fill="none" opacity="0.55">
+        <line x1="80" y1="190" x2="158" y2="190"/>
+        <line x1="92" y1="205" x2="160" y2="205"/>
+        <line x1="105" y1="220" x2="160" y2="220"/>
+        <line x1="100" y1="178" x2="118" y2="232"/>
+        <line x1="125" y1="170" x2="138" y2="232"/>
+        <line x1="148" y1="158" x2="156" y2="232"/>
+      </g>
+      <!-- 머리 (대머리) -->
+      <ellipse cx="100" cy="100" rx="42" ry="46" fill="#F2B544" stroke="#0A0806" stroke-width="3"/>
+      <!-- 헤드폰 -->
+      <rect x="55" y="92" width="14" height="22" rx="6" fill="#FFFFFF" stroke="#0A0806" stroke-width="2.5"/>
+      <rect x="131" y="92" width="14" height="22" rx="6" fill="#FFFFFF" stroke="#0A0806" stroke-width="2.5"/>
+      <path d="M62 92 Q100 62 138 92" fill="none" stroke="#0A0806" stroke-width="3"/>
+      <!-- 선글라스 (빨강 frame) -->
+      <rect x="68" y="98" width="26" height="14" rx="3" fill="#0A0806" stroke="#D6322B" stroke-width="3"/>
+      <rect x="106" y="98" width="26" height="14" rx="3" fill="#0A0806" stroke="#D6322B" stroke-width="3"/>
+      <line x1="94" y1="105" x2="106" y2="105" stroke="#D6322B" stroke-width="3"/>
+      <!-- 코 -->
+      <path d="M100 115 L96 126 L100 130 L104 126 Z" fill="#E96A21" stroke="#0A0806" stroke-width="1.5"/>
+      <!-- 점 (이마) -->
+      <circle cx="100" cy="78" r="4" fill="#D6322B"/>
+    </symbol>
+
+    <!-- LOTUS CUSHION (top-down) -->
+    <symbol id="lotus-cushion" viewBox="0 0 200 200">
+      <!-- outer ring -->
+      <circle cx="100" cy="100" r="96" fill="#1A1144" stroke="#F5D04A" stroke-width="2"/>
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#F5D04A" stroke-width="0.6"/>
+
+      <!-- petals layer 1 (green back) -->
+      <g transform="translate(100,100)">
+        <g id="lc-leaf">
+          <path d="M 0 -88 C -18 -70, -18 -44, 0 -34 C 18 -44, 18 -70, 0 -88 Z" fill="#2EA862" stroke="#0E0A06" stroke-width="1"/>
+        </g>
+        <use href="#lc-leaf" transform="rotate(22.5)"/>
+        <use href="#lc-leaf" transform="rotate(45)"/>
+        <use href="#lc-leaf" transform="rotate(67.5)"/>
+        <use href="#lc-leaf" transform="rotate(90)"/>
+        <use href="#lc-leaf" transform="rotate(112.5)"/>
+        <use href="#lc-leaf" transform="rotate(135)"/>
+        <use href="#lc-leaf" transform="rotate(157.5)"/>
+        <use href="#lc-leaf" transform="rotate(180)"/>
+        <use href="#lc-leaf" transform="rotate(202.5)"/>
+        <use href="#lc-leaf" transform="rotate(225)"/>
+        <use href="#lc-leaf" transform="rotate(247.5)"/>
+        <use href="#lc-leaf" transform="rotate(270)"/>
+        <use href="#lc-leaf" transform="rotate(292.5)"/>
+        <use href="#lc-leaf" transform="rotate(315)"/>
+        <use href="#lc-leaf" transform="rotate(337.5)"/>
+      </g>
+
+      <!-- petals layer 2 (red front, larger curls) -->
+      <g transform="translate(100,100)">
+        <g id="lc-petal">
+          <path d="M 0 -76 C -22 -58, -22 -28, 0 -14 C 22 -28, 22 -58, 0 -76 Z" fill="#D6322B" stroke="#0E0A06" stroke-width="1.2"/>
+          <path d="M 0 -64 C -12 -50, -12 -28, 0 -22 C 12 -28, 12 -50, 0 -64 Z" fill="#F8E9C2" opacity="0.6"/>
+        </g>
+        <use href="#lc-petal" transform="rotate(0)"/>
+        <use href="#lc-petal" transform="rotate(45)"/>
+        <use href="#lc-petal" transform="rotate(90)"/>
+        <use href="#lc-petal" transform="rotate(135)"/>
+        <use href="#lc-petal" transform="rotate(180)"/>
+        <use href="#lc-petal" transform="rotate(225)"/>
+        <use href="#lc-petal" transform="rotate(270)"/>
+        <use href="#lc-petal" transform="rotate(315)"/>
+      </g>
+
+      <!-- center disc -->
+      <circle cx="100" cy="100" r="32" fill="#8C1411" stroke="#F5D04A" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="32" fill="none" stroke="#F8E9C2" stroke-width="0.6" stroke-dasharray="2 3"/>
+      <circle id="cushionPress" cx="100" cy="100" r="0" fill="#F5D04A" opacity="0"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 홈 버튼 (인트로 외 모든 화면에 표시) -->
+<button id="haetalHomeBtn" onclick="goHaetalIntro()" title="처음 화면으로">⟨ 始</button>
+
+<!-- background mandala (huge, low-opacity, every screen) -->
+<svg class="bg-mandala" viewBox="0 0 400 400"><use href="#mandala"/></svg>
+
+<!-- ============================== INTRO ============================== -->
+<div class="screen active" id="intro" onclick="goCategory();" data-screen-label="00 Intro">
+  <div class="dc-border top"></div><div class="dc-border bot"></div>
+  <svg class="dc-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+
+  <div class="kiosk-bar">
+    <span class="dot"></span><span>HAETAL · KIOSK 01</span>
+    <span style="opacity:0.5">★</span><span>BUSAN · ULTRA</span>
+    <span style="opacity:0.5">★</span><span>2026.05.29</span>
+  </div>
+
+  <div class="intro-stack">
+    <div class="intro-eyebrow">HAETAL · COMPANY · BUSAN</div>
+
+    <div class="intro-grid">
+      <div class="intro-panel left">
+        <div class="intro-panel-rosettes">
+          <svg viewBox="0 0 100 100"><use href="#rosette"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#rosette-blue"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#rosette"/></svg>
+        </div>
+      </div>
+
+      <div class="intro-plate">
+        <svg class="mandala-svg" viewBox="0 0 400 400"><use href="#mandala"/></svg>
+        <svg class="intro-monk" viewBox="0 0 200 240"><use href="#kitsch-monk"/></svg>
+        <svg class="plate-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+        <svg class="plate-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+        <svg class="plate-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+        <svg class="plate-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+        <div class="intro-pop intro-pop-1">★</div>
+        <div class="intro-pop intro-pop-2">✦</div>
+        <div class="intro-pop intro-pop-3">!</div>
+      </div>
+
+      <div class="intro-panel right">
+        <div class="intro-panel-rosettes">
+          <svg viewBox="0 0 100 100"><use href="#rosette-blue"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#rosette"/></svg>
+          <svg viewBox="0 0 100 100"><use href="#rosette-blue"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-titleblock">
+      <div class="intro-title-row">
+        <span class="han">解</span>
+        <span class="ko">해탈 컴퍼니</span>
+        <span class="han">脫</span>
+      </div>
+    </div>
+
+    <div class="intro-slogan">
+      <span class="slogan-burst">★</span>
+      <span class="slogan-text">애블바디 <em>극락왕생</em></span>
+      <span class="slogan-burst">★</span>
+    </div>
+
+    <div class="intro-cta">點 擊 入 場 &nbsp;·&nbsp; TAP TO ENTER</div>
+  </div>
+
+  <div class="foot-bar">
+    <span class="pip">▸</span>
+    <span>방석에 앉아 절을 시작하소서</span>
+    <span class="pip">◆</span>
+    <span>SIT ON CUSHION · BEGIN BOW</span>
+  </div>
+</div>
+
+<!-- ============================== CATEGORY ============================== -->
+<div class="screen" id="category" data-screen-label="01 Category">
+  <div class="dc-border top"></div><div class="dc-border bot"></div>
+  <svg class="dc-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+
+  <div class="kiosk-bar">
+    <span class="dot"></span><span class="step-pop">PICK !</span>
+    <span style="opacity:0.5">★</span><span>占 · 01 / 04</span>
+    <span style="opacity:0.5">★</span><span id="serial1">No.0237</span>
+  </div>
+
+  <div class="cat-head">
+    <div class="cat-step">SELECT · YOUR · PATH</div>
+    <h2 class="cat-title">오늘 무엇을 <em>여쭐까요</em></h2>
+    <div class="cat-sub">다섯 갈래의 길 中 하나를 택하소서</div>
+  </div>
+
+  <div class="cat-grid">
+    <div class="cat-card" data-hue="red"    onclick="pickCategory('love')">
+      <div class="cat-stamp">No.01</div>
+      <svg class="cat-rosette" viewBox="0 0 100 100"><use href="#rosette"/></svg>
+      <div class="hanja">愛</div>
+      <div class="label">연애운</div>
+      <div class="desc">사랑에 빠진 그대여</div>
+      <div class="cat-pop">♡</div>
+      <div class="keymark">PRESS [1]</div>
+    </div>
+    <div class="cat-card" data-hue="orange" onclick="pickCategory('money')">
+      <div class="cat-stamp">No.02</div>
+      <svg class="cat-rosette" viewBox="0 0 100 100"><use href="#rosette-blue"/></svg>
+      <div class="hanja">財</div>
+      <div class="label">재물운</div>
+      <div class="desc">통장에 바람 들었니</div>
+      <div class="cat-pop">$</div>
+      <div class="keymark">PRESS [2]</div>
+    </div>
+    <div class="cat-card" data-hue="green"  onclick="pickCategory('health')">
+      <div class="cat-stamp">No.03</div>
+      <svg class="cat-rosette" viewBox="0 0 100 100"><use href="#rosette"/></svg>
+      <div class="hanja">康</div>
+      <div class="label">건강운</div>
+      <div class="desc">몸이 천근만근</div>
+      <div class="cat-pop">+</div>
+      <div class="keymark">PRESS [3]</div>
+    </div>
+    <div class="cat-card" data-hue="violet" onclick="pickCategory('work')">
+      <div class="cat-stamp">No.04</div>
+      <svg class="cat-rosette" viewBox="0 0 100 100"><use href="#rosette-blue"/></svg>
+      <div class="hanja">業</div>
+      <div class="label">일운</div>
+      <div class="desc">월요일이 무서워</div>
+      <div class="cat-pop">!</div>
+      <div class="keymark">PRESS [4]</div>
+    </div>
+    <div class="cat-card" data-hue="blue"   onclick="pickCategory('relation')">
+      <div class="cat-stamp">No.05</div>
+      <svg class="cat-rosette" viewBox="0 0 100 100"><use href="#rosette"/></svg>
+      <div class="hanja">緣</div>
+      <div class="label">인간관계</div>
+      <div class="desc">사람이 어려워</div>
+      <div class="cat-pop">★</div>
+      <div class="keymark">PRESS [5]</div>
+    </div>
+  </div>
+
+  <div class="foot-bar">
+    <span class="pip">▸</span>
+    <span>木簡을 가볍게 두드리소서 · TAP A WOODEN TABLET</span>
+    <span class="pip">◆</span>
+    <span>[1]~[5]</span>
+  </div>
+</div>
+
+<!-- ============================== RITUAL ============================== -->
+<div class="screen" id="ritual" data-screen-label="02 Ritual">
+  <div class="dc-border top"></div><div class="dc-border bot"></div>
+  <svg class="dc-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+
+  <div class="kiosk-bar">
+    <span class="dot"></span><span class="step-pop">BOW !</span>
+    <span style="opacity:0.5">★</span><span>拜 · 02 / 04</span>
+    <span style="opacity:0.5">★</span><span id="ritualHud">대기 중 · 一拜를 청하소서</span>
+  </div>
+
+  <div class="ritual-stack">
+    <div class="ritual-step">RITUAL · ONE BOW</div>
+    <h2 class="ritual-title">합장 후 <em>한 번 절</em>하소서</h2>
+    <div class="ritual-sub">마음을 모으고 정성을 다하면 부처의 답을 들을 수 있나니</div>
+
+    <div class="ritual-stage-wrap">
+      <div class="ritual-side left">
+        <div class="h">— OF SILENCE —</div>
+        <div class="quote">"고개를 숙이는 것은<br>곧 마음을 펴는 것이라"</div>
+        <div class="hanja-stack">默 念<br>一 心</div>
+      </div>
+
+      <div>
+        <div class="cushion-stage">
+          <svg viewBox="0 0 200 200"><use href="#lotus-cushion"/></svg>
+          <div class="bow-counter" id="bowCounter">○<small>0 / 一 拜</small></div>
+        </div>
+      </div>
+
+      <div class="ritual-side right">
+        <div class="h">— BOW ONCE —</div>
+        <div class="quote">"한 번의 절로<br>몸과 마음을<br>모두 비우라"</div>
+        <div class="hanja-stack">一 拜<br>淸 心</div>
+      </div>
+    </div>
+
+    <div class="bow-buttons">
+      <button class="bow-btn" id="bow1" onclick="doBow(1)">
+        <span class="num">拜</span>
+        <span class="ko-lbl">한 번 절하기</span>
+        <span class="lbl">PRESS · BOW · ONCE</span>
+      </button>
+    </div>
+
+    <div class="ritual-hardware">
+      <span class="pip"></span>
+      <span>방석을 누르거나 [1] · SPACE · ENTER</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== ORACLE ============================== -->
+<div class="screen" id="oracle" data-screen-label="03 Oracle">
+  <div class="dc-border top"></div><div class="dc-border bot"></div>
+  <svg class="dc-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+
+  <div class="kiosk-bar">
+    <span class="dot"></span><span class="step-pop">ORACLE !</span>
+    <span style="opacity:0.5">★</span><span>佛 · 03 / 04</span>
+    <span style="opacity:0.5">★</span><span id="serial3">No.0237</span>
+  </div>
+
+  <div class="oracle-grid">
+    <div class="oracle-left">
+      <div class="oracle-step">— ORACLE · 부처의 답 —</div>
+      <div class="oracle-monk-wrap">
+        <svg class="oracle-monk" id="oracleMonk" viewBox="0 0 200 240">
+          <use href="#kitsch-monk"/>
+          <!-- 입 = use 위 overlay (외부 CSS로 애니메이션 가능) -->
+          <ellipse id="monk-mouth" cx="100" cy="138" rx="11" ry="3" fill="#7A0E12" stroke="#0A0806" stroke-width="2"/>
+        </svg>
+        <div class="oracle-bubble" id="oracleHanja">愛</div>
+      </div>
+      <div class="oracle-cat-label" id="oracleLabel">연애운</div>
+      <div class="oracle-grade" id="oracleGrade">大 吉<small>GREAT</small></div>
+      <div class="oracle-time" id="oracleTime">2026.05.29 · 14:32 · 부산</div>
+    </div>
+    <div class="oracle-right">
+      <div class="oracle-scroll-head">— SCROLL OF TODAY · 두 루 마 리 —</div>
+      <div class="oracle-text" id="oracleText">
+        인연은 멀리 있지 않다. 오늘 마주칠 한 사람의 미소가 곧 그대를 깨우는 종소리이리라.
+      </div>
+      <div class="oracle-actions">
+        <button class="oracle-btn" id="ttsBtn" onclick="speakOracle()">
+          <span class="tts-pulse idle" id="ttsPulse"><span></span><span></span><span></span><span></span><span></span></span>
+          부처 말씀 듣기 [S]
+        </button>
+        <button class="oracle-btn primary" onclick="goPrint()">▸ 부적 받기 [P]</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== PRINTING ============================== -->
+<div class="screen" id="printing" data-screen-label="04 Printing">
+  <div class="dc-border top"></div><div class="dc-border bot"></div>
+  <svg class="dc-corner tl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner tr" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner bl" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+  <svg class="dc-corner br" viewBox="0 0 130 130"><use href="#cloud-corner"/></svg>
+
+  <div class="kiosk-bar">
+    <span class="dot"></span><span class="step-pop">PRINT !</span>
+    <span style="opacity:0.5">★</span><span>符 · 04 / 04</span>
+    <span style="opacity:0.5">★</span><span id="serial4">No.0237</span>
+  </div>
+
+  <div id="printActive">
+    <div class="print-anim"></div>
+    <div class="print-title">부 적 <em>출 력</em> 중</div>
+    <div class="print-sub">PRINTING · ABOUT 8 SEC</div>
+    <div class="print-progress"></div>
+  </div>
+
+  <div id="printDone">
+    <div class="bujeok">
+      <div class="bujeok-header"></div>
+      <div class="bujeok-body">
+        <div class="bujeok-grade" id="bujeokGrade">大 吉</div>
+        <div style="position:relative; margin: 6px 0 4px;">
+          <svg class="bujeok-mandala" viewBox="0 0 400 400"><use href="#mandala"/></svg>
+          <div class="bujeok-hanja-block">
+            <div class="bujeok-hanja" id="bujeokHanja">愛</div>
+          </div>
+        </div>
+        <div class="bujeok-label" id="bujeokLabel">연애운 부적</div>
+        <div class="bujeok-divider"></div>
+        <div class="bujeok-text" id="bujeokText">
+          인연은 멀리 있지 않다. 오늘 마주칠 한 사람의 미소가 곧 그대를 깨우는 종소리이리라.
+        </div>
+        <div class="bujeok-stamps">
+          <div class="bujeok-stamp">解</div>
+          <div class="bujeok-stamp">脫</div>
+        </div>
+      </div>
+      <div class="bujeok-footer">★ HAETAL · BUSAN · 2026.05.29 · No.<span id="bujeokNum">0237</span> ★</div>
+    </div>
+
+    <div class="done-side">
+      <div class="done-step">★ ISSUED · 발행 완료 ★</div>
+      <div class="done-msg"><em>부적</em><br>발행되었나니</div>
+      <div class="done-tag">"오늘 받은 한 장의 부적이<br>그대의 하루를 지키리라"</div>
+      <div class="done-tray"><span style="color:var(--dc-yellow)">▸</span><span>하단 인쇄대에서 부적을 가져가소서</span></div>
+      <div class="done-cta" onclick="goCategory()">다른 점괘 청하기 [SPACE]</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const CATEGORIES = {
+  love:     { hanja: '愛', label: '연애운',   desc: '사랑·인연·마음의 길' },
+  money:    { hanja: '財', label: '재물운',   desc: '금전·부귀·돈의 흐름' },
+  health:   { hanja: '康', label: '건강운',   desc: '몸과 마음·회복' },
+  work:     { hanja: '業', label: '일운',     desc: '사업·시험·성취' },
+  relation: { hanja: '緣', label: '인간관계', desc: '친구·가족·인연' }
+};
+const ORACLES = {
+  love: [
+    { grade: '大 吉', en: 'GREAT',  text: '인연은 멀리 있지 않다. 오늘 마주칠 한 사람의 미소가 곧 그대를 깨우는 종소리이리라.' },
+    { grade: '中 吉', en: 'MIDDLE', text: '서두르지 마라. 봄꽃이 가을에 피지 않듯, 그대의 사람은 정해진 때에 오느니.' },
+    { grade: '吉',   en: 'FAIR',   text: '마음을 비우면 길이 보이고, 미움을 내려두면 사랑이 깃드나니.' },
+    { grade: '小 吉', en: 'SMALL',  text: '오래 기다린 답장은 곧 도달할 것이다. 그러나 먼저 그대의 마음을 정돈하라.' }
+  ],
+  money: [
+    { grade: '大 吉', en: 'GREAT',  text: '동남쪽에서 재물의 기운이 일어나리니, 작은 일을 가벼이 여기지 마라.' },
+    { grade: '中 吉', en: 'MIDDLE', text: '쌓는 것보다 쓰는 것이 어렵다. 베푸는 자에게 재물은 다시 흐른다.' },
+    { grade: '吉',   en: 'FAIR',   text: '오늘의 한 푼이 내일의 한 짐이 되리니. 헛된 욕망을 멀리하라.' },
+    { grade: '小 吉', en: 'SMALL',  text: '큰 물결은 멀리 있다. 작은 시냇물부터 길러야 강이 되느니.' }
+  ],
+  health: [
+    { grade: '大 吉', en: 'GREAT',  text: '몸은 마음의 그림자라. 오늘 한 잔의 차가 그대의 봄을 부른다.' },
+    { grade: '中 吉', en: 'MIDDLE', text: '잠은 약과 같으니, 오늘은 일찍 몸을 누이고 내일을 맞이하라.' },
+    { grade: '吉',   en: 'FAIR',   text: '걷는 자에게 길이 열리고, 숨 쉬는 자에게 평안이 깃든다.' },
+    { grade: '小 吉', en: 'SMALL',  text: '작은 통증을 가벼이 여기지 마라. 그러나 두려움도 만들지 마라.' }
+  ],
+  work: [
+    { grade: '大 吉', en: 'GREAT',  text: '뜻을 세운 자에게 길은 비킨다. 망설이는 한 번이 일생을 가르는 한 걸음이리라.' },
+    { grade: '中 吉', en: 'MIDDLE', text: '오늘의 작은 마무리가 내일의 큰 시작이 되나니. 끝을 잘 맺으라.' },
+    { grade: '吉',   en: 'FAIR',   text: '동료의 말을 가볍게 듣지 마라. 그 안에 그대가 보지 못한 답이 있다.' },
+    { grade: '小 吉', en: 'SMALL',  text: '서두름은 실수를 부른다. 천천히 가도 길은 멀어지지 않느니.' }
+  ],
+  relation: [
+    { grade: '大 吉', en: 'GREAT',  text: '오랜 친구로부터 소식이 닿으리니, 그 인연을 가벼이 여기지 마라.' },
+    { grade: '中 吉', en: 'MIDDLE', text: '말하는 것보다 듣는 것이 큰 공덕이라. 오늘은 귀를 열라.' },
+    { grade: '吉',   en: 'FAIR',   text: '미움도 사랑도 모두 흘러간다. 다만 오늘의 한 마디만 정성껏 하라.' },
+    { grade: '小 吉', en: 'SMALL',  text: '거리는 마음의 척도가 아니라. 멀리 있어도 가까운 사람을 기억하라.' }
+  ]
+};
+const BOW_GLYPHS = ['一','二','三'];
+let currentCat = 'love';
+let currentGrade = '大 吉';
+let currentEnGrade = 'GREAT';
+let currentText = '';
+let bowCount = 0;
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  /* 홈 버튼 = 인트로 외 화면에서만 보임 */
+  var homeBtn = document.getElementById('haetalHomeBtn');
+  if (homeBtn) homeBtn.style.display = (id === 'intro') ? 'none' : 'block';
+  if (window.parent && window.parent !== window) {
+    try {
+      const idx = ['intro','category','ritual','oracle','printing'].indexOf(id);
+      window.parent.postMessage({ slideIndexChanged: idx }, '*');
+    } catch(e) {}
+  }
+}
+function goHaetalIntro() {
+  bowCount = 0; resetBows();
+  document.getElementById('printActive').style.display = 'flex';
+  document.getElementById('printDone').classList.remove('show');
+  showScreen('intro'); woodfish(0.07);
+}
+function goCategory() {
+  bowCount = 0; resetBows();
+  document.getElementById('printActive').style.display = 'flex';
+  document.getElementById('printDone').classList.remove('show');
+  showScreen('category'); bell(0.08); refreshSerials();
+}
+function pickCategory(key) { currentCat = key; bowCount = 0; resetBows(); showScreen('ritual'); woodfish(0.05); }
+function resetBows() {
+  const btn = document.getElementById('bow1');
+  if (btn) { btn.classList.remove('done'); btn.disabled = false; }
+  document.getElementById('bowCounter').innerHTML = '○<small>0 / 一 拜</small>';
+  document.getElementById('ritualHud').textContent = '대기 중 · 一拜를 청하소서';
+  pulseCushion(0);
+}
+function pulseCushion(level) {
+  const c = document.getElementById('cushionPress');
+  if (!c) return;
+  if (level === 0) { c.setAttribute('r', 0); c.setAttribute('opacity', 0); return; }
+  c.setAttribute('opacity', 0.55);
+  c.setAttribute('r', 14 + level * 6);
+  setTimeout(() => { c.setAttribute('opacity', 0.0); }, 600);
+}
+function doBow(n) {
+  if (n !== bowCount + 1) return;
+  bowCount = n;
+  const btn = document.getElementById(`bow${n}`);
+  btn.classList.add('done'); btn.disabled = true;
+  document.getElementById('bowCounter').innerHTML = `一<small>1 / 一 拜</small>`;
+  document.getElementById('ritualHud').textContent = '一拜 완료 · 부처의 답을 받으소서';
+  pulseCushion(n); woodfish(0.09);
+  setTimeout(() => bell(0.18), 400);
+  setTimeout(() => goOracle(), 1300);
+}
+function goOracle() {
+  const c = CATEGORIES[currentCat];
+  const pool = ORACLES[currentCat];
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  currentGrade = pick.grade; currentEnGrade = pick.en; currentText = pick.text;
+  document.getElementById('oracleHanja').textContent = c.hanja;
+  document.getElementById('oracleLabel').textContent = c.label;
+  document.getElementById('oracleGrade').innerHTML = `${pick.grade}<small>${pick.en}</small>`;
+  document.getElementById('oracleText').textContent = pick.text;
+  document.getElementById('oracleTime').textContent = formattedTime();
+  showScreen('oracle'); bell(0.3);
+  setTimeout(() => speakOracle(), 800);
+}
+function goPrint() {
+  const c = CATEGORIES[currentCat];
+  document.getElementById('bujeokHanja').textContent = c.hanja;
+  document.getElementById('bujeokLabel').textContent = c.label + ' 부적';
+  document.getElementById('bujeokGrade').textContent = currentGrade;
+  document.getElementById('bujeokText').textContent = currentText;
+  const num = String(237 + Math.floor(Math.random() * 800)).padStart(4, '0');
+  document.getElementById('bujeokNum').textContent = num;
+  document.getElementById('serial4').textContent = 'No.' + num;
+
+  /* 메인 흐름 = 시뮬레이션만 (관람객) → 발행 완료 → OS 기억된 프린터로 자동 출력 */
+  /* 다이얼로그는 어드민 "프린트 테스트" 버튼에서만 호출 (운영자 셋업용) */
+  showScreen('printing');
+  document.getElementById('printActive').style.display = 'flex';
+  document.getElementById('printDone').classList.remove('show');
+  setTimeout(() => {
+    document.getElementById('printActive').style.display = 'none';
+    document.getElementById('printDone').classList.add('show');
+    bell(0.42);
+  }, 2600);
+}
+function refreshSerials() {
+  const num = String(237 + Math.floor(Math.random() * 800)).padStart(4, '0');
+  document.getElementById('serial1').textContent = 'No.' + num;
+  document.getElementById('serial3').textContent = 'No.' + num;
+}
+function formattedTime() {
+  const d = new Date();
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} · ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} · 부산`;
+}
+function speakOracle() {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const c = CATEGORIES[currentCat];
+  const u = new SpeechSynthesisUtterance(`${c.label}이로다. ${currentGrade}. ${currentText}`);
+
+  /* TTS 설정 = 어드민 store.tts에서 (디폴트 = 남자 부처 톤) */
+  const tts = (window.__haetalStore && window.__haetalStore.tts) || {};
+  const mode = tts.mode || 'male';     /* 디폴트 = 남자 */
+  const malePatterns = /male|man|남|junho|jihun|min|joon|gunwoo|seoul.*male|^ko-kr-male/i;
+  const femalePatterns = /female|woman|여|yuna|sora|heami|sun.?hi|seoul.*female/i;
+
+  const voices = window.speechSynthesis.getVoices();
+  const koVoices = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('ko'));
+
+  let voice = null;
+  if (tts.voiceName) voice = voices.find(v => v.name === tts.voiceName);
+  if (!voice && mode === 'male')   voice = koVoices.find(v => malePatterns.test(v.name));
+  if (!voice && mode === 'female') voice = koVoices.find(v => femalePatterns.test(v.name));
+  if (!voice) voice = koVoices[0];
+
+  if (voice) u.voice = voice;
+  const isReallyMale = voice && malePatterns.test(voice.name);
+  u.pitch  = (tts.pitch != null) ? tts.pitch  : (mode === 'male' && !isReallyMale ? 0.4 : 0.85);
+  u.rate   = (tts.rate  != null) ? tts.rate   : 0.65;
+  u.lang = 'ko-KR';
+  u.volume = 1.0;
+
+  const pulse = document.getElementById('ttsPulse');
+  const monk  = document.getElementById('oracleMonk');
+  pulse.classList.remove('idle');
+  if (monk) monk.classList.add('speaking');  /* 입 애니메이션 시작 */
+  u.onend = () => {
+    pulse.classList.add('idle');
+    if (monk) monk.classList.remove('speaking');
+  };
+  u.onerror = () => {
+    pulse.classList.add('idle');
+    if (monk) monk.classList.remove('speaking');
+  };
+  window.speechSynthesis.speak(u);
+}
+if (typeof speechSynthesis !== 'undefined') speechSynthesis.onvoiceschanged = () => {};
+
+let audioCtx = null;
+function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+function woodfish(vol = 0.08) {
+  initAudio();
+  try {
+    const osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.15);
+    g.gain.setValueAtTime(vol, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+    osc.connect(g); g.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+  } catch(e) {}
+}
+function bell(vol = 0.15) {
+  initAudio();
+  try {
+    const osc = audioCtx.createOscillator(), osc2 = audioCtx.createOscillator(), g = audioCtx.createGain();
+    osc.type = 'sine'; osc.frequency.value = 440;
+    osc2.type = 'sine'; osc2.frequency.value = 880;
+    g.gain.setValueAtTime(vol, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.8);
+    osc.connect(g); osc2.connect(g); g.connect(audioCtx.destination);
+    osc.start(); osc2.start();
+    osc.stop(audioCtx.currentTime + 1.8); osc2.stop(audioCtx.currentTime + 1.8);
+  } catch(e) {}
+}
+
+document.addEventListener('keydown', (e) => {
+  const active = document.querySelector('.screen.active');
+  if (!active) return;
+  const id = active.id;
+  if (id === 'intro') { if (e.key === 'Enter' || e.key === ' ') goCategory(); return; }
+  if (id === 'category') {
+    const map = { '1':'love','2':'money','3':'health','4':'work','5':'relation' };
+    if (map[e.key]) pickCategory(map[e.key]);
+    return;
+  }
+  if (id === 'ritual') {
+    if (e.key === '1' || e.key === ' ' || e.key === 'Enter') doBow(1);
+    if (e.key === 'Escape') goCategory();
+    return;
+  }
+  if (id === 'oracle') {
+    if (e.key.toLowerCase() === 'p') goPrint();
+    if (e.key === 'Escape') goCategory();
+    if (e.key.toLowerCase() === 's') speakOracle();
+    return;
+  }
+  if (id === 'printing') {
+    if (e.key === ' ' || e.key === 'Enter') {
+      if (document.getElementById('printDone').classList.contains('show')) goCategory();
+    }
+  }
+});
+
+refreshSerials();
+
+/* ---------- 어드민 override 적용 (부적 문구 풀) ---------- */
+function applyHaetalOraclesOverride(){
+  if (!window.__haetalStore || !window.__haetalStore.oracles) return;
+  Object.keys(window.__haetalStore.oracles).forEach(function(cat){
+    var arr = window.__haetalStore.oracles[cat];
+    if (Array.isArray(arr) && arr.length) ORACLES[cat] = arr;
+  });
+}
+window.applyHaetalOraclesOverride = applyHaetalOraclesOverride;  /* 어드민에서 즉시 호출용 */
+window.addEventListener('load', applyHaetalOraclesOverride);
+setTimeout(applyHaetalOraclesOverride, 100);
+</script>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1A1144"/><circle cx="50" cy="50" r="32" fill="#D6322B" stroke="#F5D04A" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="#F5D04A"/></svg>
+</template>
+
+<!-- ★ ADMIN PANEL (Ctrl+Shift+A or click ⚙ button bottom-left) ★ -->
+<script src="admin-haetal-config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
